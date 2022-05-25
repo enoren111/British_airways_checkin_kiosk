@@ -4,7 +4,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 /** this class is login method of booking number, passenger input the booking number to confirm unique ticket
  * @author Songyun Yang
- * @version  1.03242342
+ * @version  1.34
  */
 public class LoginWay1 extends MainFrame{
 

@@ -4,7 +4,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 /** this class is use id document and surname to login. After passenger input, passenger can choose the flight
  * @author Songyun Yang
- * @version  1.0
+ * @version  1.234
  */
 public class LoginWay2 extends MainFrame{
 
