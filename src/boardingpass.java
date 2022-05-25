@@ -5,7 +5,7 @@ import java.awt.event.ActionListener;
 
 /** this class is used to print boarding pass, carry-on bag and check-In counter.
  * @author Tianyi Ren
- * @version  2.0
+ * @version  1235
  */
 
 public class boardingpass extends MainFrame implements ActionListener {
