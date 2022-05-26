@@ -9,6 +9,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import control.boardingpass;
 
 /**
  *  Title: MyFrame1.java
@@ -99,7 +100,7 @@ public class InformationConfirm extends MainFrame {
         p1.setSize(400, 100);
 
         l1 = new JLabel(myTicket.getFlightNumber(), JLabel.CENTER);
-        l1.setFont(new Font(null, Font.PLAIN, 20));
+        l1.setFont(new Font(null, Font.PLAIN, 40));
         l1.setForeground(Color.blue);
         p1.add(l1);
         g1.setConstraints(p1, gb1);
@@ -115,6 +116,10 @@ public class InformationConfirm extends MainFrame {
         l3 = new JLabel("Your Book number:"+myTicket.getBookNumber());
         l4 = new JLabel("Time: 10:00~12:00");
         JLabel l7 = new JLabel("Boarding Entrance: C7");
+        l2.setFont(new Font(null, Font.PLAIN, 25));
+        l3.setFont(new Font(null, Font.PLAIN, 25));
+        l4.setFont(new Font(null, Font.PLAIN, 25));
+        l7.setFont(new Font(null, Font.PLAIN, 25));
         l2.setBorder(BorderFactory.createLineBorder(Color.black));
         l3.setBorder(BorderFactory.createLineBorder(Color.black));
         l4.setBorder(BorderFactory.createLineBorder(Color.black));
@@ -141,9 +146,14 @@ public class InformationConfirm extends MainFrame {
         JLabel mna2 = new JLabel("2. Please keep the printed boarding pass and take your ID card and boarding pass to the designated boarding gate.");
         JLabel mna3 = new JLabel("3. The upper limit for personal luggage is 4kg, and the upper limit for checked luggage is 20kg.");
         JLabel mna4 = new JLabel("4. If you have any operational or other problems, please contact our staff or call ******* for assistance.");
+        mna1.setFont(new Font(null, Font.PLAIN, 20));
+        mna2.setFont(new Font(null, Font.PLAIN, 20));
+        mna3.setFont(new Font(null, Font.PLAIN, 20));
+        mna4.setFont(new Font(null, Font.PLAIN, 20));
         mna1.setBorder(BorderFactory.createLineBorder(Color.black));
         mna2.setBorder(BorderFactory.createLineBorder(Color.black));
         mna3.setBorder(BorderFactory.createLineBorder(Color.black));
+        mna4.setBorder(BorderFactory.createLineBorder(Color.black));
         //Create a box to arrange three texts
         Box box3 = Box.createVerticalBox();
         box3.add(mna1);
@@ -152,6 +162,8 @@ public class InformationConfirm extends MainFrame {
         box3.add(mna2);
         box3.add(Box.createVerticalStrut(10));
         box3.add(mna3);
+        box3.add(Box.createVerticalStrut(10));
+        box3.add(mna4);
         p5.add(box3);
         g1.setConstraints(p5, gb5);
         mainpanel.add(p5);
@@ -161,24 +173,41 @@ public class InformationConfirm extends MainFrame {
     public void ThirdSet() {
         //The layout setting for third panel
         p3.setSize(400, 50);
-        l5 = new JLabel("Click the button to select seats and food");
+        String mySeatState=myTicket.getSeatNumber().split("")[0];
+        if(mySeatState=="-1") {
+            l5 = new JLabel("Click the button to print");
+            l5.setFont(new Font(null, Font.PLAIN, 20));
+            b2 = new JButton("print");
+            b2.addMouseListener(new MouseAdapter() {
+                @Override
+                public void mouseClicked(MouseEvent e) {
+                    new boardingpass(myTicket.getBookNumber());
+                    jframe.dispose();
+                }
+            });
+        }
+        else{
+            l5 = new JLabel("Click the button to select seats and food");
+            l5.setFont(new Font(null, Font.PLAIN, 20));
+            b2 = new JButton("confirm");
+            b2.addMouseListener(new MouseAdapter() {
+                @Override
+                public void mouseClicked(MouseEvent e) {
+
+                    new FlightFrame(myTicket.getBookNumber());
+                    jframe.dispose();
+                }
+            });
+        }
         Box box3 = Box.createHorizontalBox();
         box3.add(l5);
         box3.add(Box.createHorizontalStrut(30));
-        b2 = new JButton("confirm");
         box3.add(b2);
         p3.add(box3);
         g1.setConstraints(p3, gb3);
         mainpanel.add(p3);
 
-        b2.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
 
-                    new FlightFrame(myTicket.getBookNumber());
-                    jframe.dispose();
-            }
-        });
     }
 
     //Set up the popover after clicking the print button
@@ -204,6 +233,7 @@ public class InformationConfirm extends MainFrame {
         });
         Box box4 = Box.createHorizontalBox();
         l6=new JLabel("Click this button to return to the login page ");
+        l6.setFont(new Font(null, Font.PLAIN, 20));
         box4.add(l6);
         box4.add(Box.createHorizontalStrut(30));
         box4.add(b1);
