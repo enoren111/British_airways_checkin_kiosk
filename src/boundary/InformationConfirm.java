@@ -1,3 +1,8 @@
+package boundary;
+
+import control.Customer;
+import control.Ticket;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -12,7 +17,7 @@ import java.awt.event.MouseEvent;
  *  @since 2022.3.27
  *  @version 1.0
  */
-public class InformationConfirm extends MainFrame{
+public class InformationConfirm extends MainFrame {
 
     JFrame DFrame1 = new JFrame();
     JFrame jframe = this;
@@ -46,7 +51,7 @@ public class InformationConfirm extends MainFrame{
     String bookNumber="";
     Ticket myTicket;
 
-    public  InformationConfirm(String bookNumber) {
+    public  InformationConfirm(Ticket myTicket) {
 
         mainpanel.setSize(400, 400);
         mainpanel.setLocation(100, 100);
@@ -55,7 +60,7 @@ public class InformationConfirm extends MainFrame{
 
         this.bookNumber=bookNumber;
 
-        Database database=new Database();
+        Customer database=new Customer();
         myTicket=database.checkBookNumber(bookNumber);
         //Set for first panel
         gb1.fill = GridBagConstraints.HORIZONTAL;

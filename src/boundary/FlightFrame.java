@@ -1,3 +1,8 @@
+package boundary;
+
+import control.Customer;
+import control.Ticket;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -13,7 +18,7 @@ public class FlightFrame extends MainFrame implements ActionListener {
 	String mySeatType;
 	String mySeatId;
 	Ticket myTicket;
-	Database database;
+	Customer database;
 	String bookNumber;
 	JPanel mainPanel = new JPanel();
 
@@ -41,7 +46,7 @@ public class FlightFrame extends MainFrame implements ActionListener {
 		 * operate under the container
 		 */
 		this.bookNumber = bookNumber;
-		database = new Database();
+		database = new Customer();
 
 		SeatButton[] seatButtons = new SeatButton[16];
 		seatButtons[0] = seatButton1;
@@ -203,13 +208,13 @@ public class FlightFrame extends MainFrame implements ActionListener {
 
 	//Calculate the total fee for extra option
 	public void calFee() {
-		if(ord_option.getSelectedItem().toString()=="gourmet menu") {
+		if(ord_option.getSelectedItem().toString().equals("gourmet menu")) {
 			this.extraFee=50;
 		}
-		if( mySeatType=="special") {
+		if(mySeatType.equals("special")) {
 			this.extraFee=80;
 		}
-		if( mySeatType=="special"&&ord_option.getSelectedItem().toString()=="gourmet menu") {
+		if(mySeatType.equals("special") && ord_option.getSelectedItem().toString().equals("gourmet menu")) {
 			this.extraFee=130;
 		}
 
@@ -220,17 +225,17 @@ public class FlightFrame extends MainFrame implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		int check = CheckSelection();
 		if (check == 0) {
-			JOptionPane.showMessageDialog(this,"You didn't choose a seat!","Warning",0);
+			JOptionPane.showMessageDialog(this,"You didn't choose a seat!","Warning", JOptionPane.ERROR_MESSAGE);
 		}
 		else if(check > 1) {
-			JOptionPane.showMessageDialog(this,"You choose more than one seat!","Warning",0);
+			JOptionPane.showMessageDialog(this,"You choose more than one seat!","Warning", JOptionPane.ERROR_MESSAGE);
 		}
 		else {
-			int sure = JOptionPane.showConfirmDialog(this,"Are you sure about your choice?","Hint",2,1);
+			int sure = JOptionPane.showConfirmDialog(this,"Are you sure about your choice?","Hint", JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE);
 			if(sure == 0) {
 				if (e.getSource() == b1) {
 					for (SeatButton seatButton:seats) {
-						if(seatButton.SeatState == "1") {
+						if(seatButton.SeatState.equals("1")) {
 							mySeatState = "-1";
 							mySeatId = seatButton.SeatId;
 							mySeatType = seatButton.SeatType;
@@ -249,7 +254,7 @@ public class FlightFrame extends MainFrame implements ActionListener {
 					database.replace(myTicket);
 					database.write();
 					this.calFee();
-					if(mySeatType!="special"&&ord_option.getSelectedItem().toString()!="gourmet menu") {
+					if(!mySeatType.equals("special") && !ord_option.getSelectedItem().toString().equals("gourmet menu")) {
 						this.dispose();
 						boardingpass boarding=new boardingpass(bookNumber);
 					}

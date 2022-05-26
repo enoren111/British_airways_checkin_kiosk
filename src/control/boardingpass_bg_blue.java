@@ -1,27 +1,29 @@
+package control;
+
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 
-public class boardingpass_bg_yellow extends JPanel {
+public class boardingpass_bg_blue extends JPanel {
     Image boarding_bg;
-    String name,carry_num;
+    String name,counter_num;
 
-    public boardingpass_bg_yellow(String name,String carry_num){
+    public boardingpass_bg_blue(String name, String counter_num){
         this.name=name;
-        this.carry_num=carry_num;
+        this.counter_num=counter_num;
     }
+
 
     @Override
     public void paint(Graphics g2) {
         super.paint(g2);
         try {
-            boarding_bg= ImageIO.read(new File("boardingpass_yellow.png"));
+            boarding_bg= ImageIO.read(new File("boardingpass_blue.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }
-
         Graphics2D g = (Graphics2D) g2;
         Font font1=new Font("Century", Font.PLAIN,55);
         Font font2=new Font("Montserrat", Font.PLAIN,35);
@@ -43,10 +45,11 @@ public class boardingpass_bg_yellow extends JPanel {
 
         g.setFont(font2);
         g.setColor(Color.BLACK);
-        g.drawString(carry_num,55,300);
+        g.drawString(counter_num,55,300);
 
         g.setFont(font3);
         g.setColor(Color.gray);
-        g.drawString("Carry-On Number",57,320);
+        g.drawString("Check-In Counter",57,320);
+
     }
 }

@@ -1,4 +1,6 @@
+package boundary;
 
+import boundary.FlightFrame;
 
 import javax.swing.*;
 

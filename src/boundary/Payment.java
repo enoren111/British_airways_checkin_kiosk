@@ -1,4 +1,8 @@
+package boundary;
 
+import boundary.FlightFrame;
+import boundary.MainFrame;
+import boundary.boardingpass;
 
 import java.awt.Font;
 import java.awt.Color;
@@ -50,7 +54,7 @@ public class Payment extends MainFrame implements ActionListener {
 		JPanel panel2 = new JPanel();
 		mainPanel.add(panel2);
 		panel2.setLayout(new BorderLayout());
-		panel2.setBorder(BorderFactory.createTitledBorder("Credit Card for Payment"));
+		panel2.setBorder(BorderFactory.createTitledBorder("Credit Card for boundary.Payment"));
 		jt1 = new JTextField(20);
 		jt2 = new JTextField(20);
 		jt1.setBorder(BorderFactory.createTitledBorder("Account Number"));
@@ -90,7 +94,7 @@ public class Payment extends MainFrame implements ActionListener {
 			public void actionPerformed(ActionEvent e) {
 				if (e.getSource() == b1) {
 					if ("".equals(jt1.getText()) || "".equals(jt2.getText())){
-						JOptionPane.showMessageDialog(null, "Please input your credit card number and password to complete your payment", "Payment error",
+						JOptionPane.showMessageDialog(null, "Please input your credit card number and password to complete your payment", "boundary.Payment error",
 								JOptionPane.WARNING_MESSAGE);}
 						else {
 							this.dispose();

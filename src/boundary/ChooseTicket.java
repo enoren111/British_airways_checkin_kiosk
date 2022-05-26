@@ -1,3 +1,10 @@
+package boundary;
+
+import boundary.ChooseLoginWay;
+import boundary.InformationConfirm;
+import boundary.MainFrame;
+import control.Ticket;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
@@ -6,7 +13,7 @@ import java.awt.event.MouseEvent;
  * @author Songyun Yang
  * @version  1.0
  */
-public class ChooseTicket extends MainFrame{
+public class ChooseTicket extends MainFrame {
 
     private JLabel titleLabel;
     private JButton bookingNumber, idDocument, scanning;
@@ -51,7 +58,7 @@ public class ChooseTicket extends MainFrame{
                     @Override
                     public void mouseClicked(MouseEvent e) {
                         System.out.println(ticketlist[q].getBookNumber());
-                        new InformationConfirm(ticketlist[q].getBookNumber());
+                        new InformationConfirm(ticketlist[q]);
                         jframe.dispose();
                     }
                 });

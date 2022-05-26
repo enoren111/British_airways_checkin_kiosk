@@ -1,28 +1,33 @@
+package boundary;
+
+import boundary.ChooseLoginWay;
+import boundary.MainFrame;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-/** this class is login method of booking number, passenger input the booking number to confirm unique ticket
+
+/** this class is fake database, to test boundary.login part
  * @author Songyun Yang
- * @version  1.34
+ * @version  1.0
  */
-public class LoginWay1 extends MainFrame{
+public class LoginWay3 extends MainFrame {
 
     private JLabel titleLabel;
     private JButton confirm, back;
     private final JFrame jframe=this;
-    private JTextField bookingNumber;
     JPanel panel1 = new JPanel();
 
-    public LoginWay1(){
+    public LoginWay3() {
         GridLayout gridLayout = new GridLayout(3, 1);
 
         panel1.setLayout(gridLayout);
         init1();
         init(panel1);
         actionEvent();
-        setTitle("Booking Number Login");
-
+        this.setTitle("Scan");
+        this.setVisible(true);
     }
 
     public void init1(){
@@ -31,7 +36,7 @@ public class LoginWay1 extends MainFrame{
         JPanel Panel2 = new JPanel();
         JPanel Panel3 = new JPanel();
 
-        titleLabel=new JLabel("Please in put your booking number");
+        titleLabel=new JLabel("Please in put id document on the scanning desk");
         titleLabel.setFont(new Font("Arial Black", Font.BOLD, 15));
         Panel1.add(titleLabel);
 
@@ -43,12 +48,6 @@ public class LoginWay1 extends MainFrame{
         back.setSize(100,30);
         Panel3.add(back);
 
-        bookingNumber = new JTextField();
-        bookingNumber.setColumns(20);
-        bookingNumber.setBorder(BorderFactory.createLineBorder(Color.GRAY));
-        Panel2.add(bookingNumber);
-        Panel2.setBorder(BorderFactory.createTitledBorder("bookingNumber:"));
-
         panel1.add(Panel1);
         panel1.add(Panel2);
         panel1.add(Panel3);
@@ -59,19 +58,11 @@ public class LoginWay1 extends MainFrame{
         confirm.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                Database database = new Database();
-                Ticket ticket = database.checkBookNumber(bookingNumber.getText());
-                if(ticket==null){
-                    bookingNumber.setText("");
-                    bookingNumber.setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.red), "Wrong"));
-                }else {
-                    new InformationConfirm(bookingNumber.getText());
-                    jframe.dispose();
-                }
+
             }
         });
 
-        back.addMouseListener(new MouseAdapter(){
+        back.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
                 new ChooseLoginWay();

@@ -1,12 +1,14 @@
+package boundary;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-/** this class is used for passenger choosing login way, the first frame temporarily
+/** this class is used for passenger choosing boundary.login way, the first frame temporarily
  * @author Songyun Yang
  * @version  1.0
  */
-public class ChooseLoginWay extends MainFrame{
+public class ChooseLoginWay extends MainFrame {
 
     private JLabel titleLabel;
     private JButton bookingNumber, idDocument, scanning;
@@ -32,7 +34,7 @@ public class ChooseLoginWay extends MainFrame{
         JPanel log2Panel = new JPanel();
         JPanel log3Panel = new JPanel();
 
-        titleLabel=new JLabel("Please choose login way");
+        titleLabel=new JLabel("Please choose boundary.login way");
         titleLabel.setFont(new Font("Arial Black", Font.BOLD, 15));
         titlePanel.add(titleLabel);
 

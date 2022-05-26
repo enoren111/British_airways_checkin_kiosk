@@ -1,16 +1,38 @@
-import java.util.HashSet;
-import java.util.Objects;
+package control;
+
+import entity.CustomerInformation;
+
 import java.io.*;
-/** this class is fake database, to test login part
+import java.util.Objects;
+
+
+/** this class is fake database, to test boundary.login part
  * @author Songyun Yang
  * @version  1.0
  */
-public class Database {
-    private String pathname = "test.txt";
-    public HashSet<Ticket> ticketHashSet=new HashSet<Ticket>();
 
-    public Database(){
+public class Customer extends CustomerInformation {
+    public Customer(){
         readFile();
+    }
+
+    public void readFile() {
+        try (FileReader reader = new FileReader(pathname);
+             BufferedReader br = new BufferedReader(reader)
+        ) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                System.out.println(line);
+                String[] ticketSequence;
+                ticketSequence = line.split(",");
+                Ticket ticket = new Ticket(ticketSequence[0],ticketSequence[1],
+                        ticketSequence[2],ticketSequence[3],ticketSequence[4],ticketSequence[5],
+                        ticketSequence[6],ticketSequence[7],ticketSequence[8]);
+                ticketHashSet.add(ticket);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public void delete(String bookNumber){
@@ -18,6 +40,7 @@ public class Database {
         deleteTicket = checkBookNumber(bookNumber);
         ticketHashSet.remove(deleteTicket);
     }
+
     public void add(Ticket ticket){
         ticketHashSet.add(ticket);
     }
@@ -36,9 +59,8 @@ public class Database {
         return null;
     }
 
-    public Ticket[] checkIdDocument(String surname,String idDocument){
-
-        Ticket[] tickets = new Ticket[5];
+    public Ticket[] checkIdDocument(String surname, String idDocument){
+        Ticket[] tickets=new Ticket[10];
         int i=0;
         for(Ticket ticket: ticketHashSet){
             if(Objects.equals(ticket.getIdDocument(), idDocument)){
@@ -52,24 +74,6 @@ public class Database {
             return null;
         }
         return tickets;
-    }
-
-    public void readFile() {
-        try (FileReader reader = new FileReader(pathname);
-             BufferedReader br = new BufferedReader(reader)
-        ) {
-            String line;
-            while ((line = br.readLine()) != null) {
-                System.out.println(line);
-                String[] ticketSequence;
-                ticketSequence = line.split(",");
-                Ticket ticket = new Ticket(ticketSequence[0],ticketSequence[1],ticketSequence[2],ticketSequence[3],
-                        ticketSequence[4],ticketSequence[5],ticketSequence[6],ticketSequence[7],ticketSequence[8]);
-                ticketHashSet.add(ticket);
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 
     public boolean write(){

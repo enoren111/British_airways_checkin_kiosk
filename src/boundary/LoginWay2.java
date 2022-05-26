@@ -1,16 +1,19 @@
+package boundary;
+
+import control.Customer;
+import control.Ticket;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-/** this class is use id document and surname to login. After passenger input, passenger can choose the flight
+/** this class is use id document and surname to boundary.login. After passenger input, passenger can choose the flight
  * @author Songyun Yang
  * @version  1.234567
  */
-public class LoginWay2 extends MainFrame{
+public class LoginWay2 extends MainFrame {
 
-    private JLabel titleLabel;
     private JButton confirm, back;
-    //use to close itself
+    //used to close itself
     private final JFrame jframe = this;
     private JTextField surname, idDocument;
     JPanel panel1 = new JPanel();
@@ -26,13 +29,13 @@ public class LoginWay2 extends MainFrame{
     }
 
     public void init1(){
-        //set four panel, 1 panel is use to set title
+        //set four panel, 1 panel is used to set title
         JPanel Panel1 = new JPanel();
         JPanel Panel2 = new JPanel();
         JPanel Panel3 = new JPanel();
         JPanel Panel4 = new JPanel();
 
-        titleLabel=new JLabel("Please input your surname and id");
+        JLabel titleLabel = new JLabel("Please input your surname and id");
         titleLabel.setFont(new Font("Arial Black", Font.BOLD, 15));
         Panel1.add(titleLabel);
 
@@ -75,7 +78,7 @@ public class LoginWay2 extends MainFrame{
         confirm.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                Database database = new Database();
+                Customer database = new Customer();
                 Ticket[] tickets = database.checkIdDocument(surname.getText(),idDocument.getText());
                 if(tickets==null){
                     idDocument.setText("");

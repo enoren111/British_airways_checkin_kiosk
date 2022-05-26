@@ -1,3 +1,8 @@
+package boundary;
+
+import control.*;
+
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -17,7 +22,7 @@ public class boardingpass extends MainFrame implements ActionListener {
     public boardingpass(String bookNumber){
 
         /*Get the information of corresponding customer.*/
-        Database database=new Database();
+        Customer database=new Customer();
         Ticket myTicket=database.checkBookNumber(bookNumber);
 
         /*The panel used to contain the other two panels.*/
