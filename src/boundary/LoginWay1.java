@@ -26,7 +26,6 @@ public class LoginWay1 extends MainFrame {
         init(panel1);
         actionEvent();
         setTitle("Booking Number Login");
-
     }
 
     public void init1(){
@@ -59,7 +58,6 @@ public class LoginWay1 extends MainFrame {
     }
 
     public void actionEvent(){
-
         confirm.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {

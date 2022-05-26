@@ -9,7 +9,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import control.boardingpass;
 
 /**
  *  Title: MyFrame1.java
@@ -62,7 +61,7 @@ public class InformationConfirm extends MainFrame {
         this.bookNumber=bookNumber;
 
         Customer database=new Customer();
-        myTicket=database.checkBookNumber(bookNumber);
+        this.myTicket=myTicket;
         //Set for first panel
         gb1.fill = GridBagConstraints.HORIZONTAL;
         gb1.weighty = 100;
@@ -142,10 +141,14 @@ public class InformationConfirm extends MainFrame {
         //The layout setting for second panel
         p5.setBorder(BorderFactory.createTitledBorder("Matters Needing Attention"));
         p5.setSize(400, 400);
-        JLabel mna1 = new JLabel("1.Please check your personal boarding information carefully. If there is any discrepancy, please contact the staff." );
-        JLabel mna2 = new JLabel("2. Please keep the printed boarding pass and take your ID card and boarding pass to the designated boarding gate.");
-        JLabel mna3 = new JLabel("3. The upper limit for personal luggage is 4kg, and the upper limit for checked luggage is 20kg.");
-        JLabel mna4 = new JLabel("4. If you have any operational or other problems, please contact our staff or call ******* for assistance.");
+        JLabel mna1 = new JLabel("1.Please check your personal boarding information carefully. " +
+                                       "If there is any discrepancy, please contact the staff." );
+        JLabel mna2 = new JLabel("2. Please keep the printed boarding pass and take your ID card " +
+                                      "and boarding pass to the designated boarding gate.");
+        JLabel mna3 = new JLabel("3. The upper limit for personal luggage is 4kg, " +
+                                       "and the upper limit for checked luggage is 20kg.");
+        JLabel mna4 = new JLabel("4. If you have any operational or other problems," +
+                                       " please contact our staff or call ******* for assistance.");
         mna1.setFont(new Font(null, Font.PLAIN, 20));
         mna2.setFont(new Font(null, Font.PLAIN, 20));
         mna3.setFont(new Font(null, Font.PLAIN, 20));
@@ -173,8 +176,8 @@ public class InformationConfirm extends MainFrame {
     public void ThirdSet() {
         //The layout setting for third panel
         p3.setSize(400, 50);
-        String mySeatState=myTicket.getSeatNumber().split("")[0];
-        if(mySeatState=="-1") {
+        String mySeatState=myTicket.getSeatNumber().split(",")[0];
+        if(mySeatState.equals("-1")) {
             l5 = new JLabel("Click the button to print");
             l5.setFont(new Font(null, Font.PLAIN, 20));
             b2 = new JButton("print");
