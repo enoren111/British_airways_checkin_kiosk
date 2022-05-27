@@ -1,11 +1,13 @@
 package control;
 import entity.TicketInformation;
 public class Ticket extends TicketInformation implements TicketInfo {
-    public Ticket(String surname, String idDocument, String flightNumber, String bookNumber,
-                  String seatNumber, String foodType, String boardingPassNumber,
+
+
+    public Ticket(String name, String idDocument, String flightNumber, String bookNumber, String seatNumber,
+                  String foodType, String creditCard, String creditCardPassword,
                   String carryOnBaggageNumber, String counterNumber) {
-        super(surname, idDocument, flightNumber, bookNumber, seatNumber,
-                foodType, boardingPassNumber, carryOnBaggageNumber, counterNumber);
+        super(name, idDocument, flightNumber, bookNumber, seatNumber, foodType,
+                creditCard, creditCardPassword, carryOnBaggageNumber, counterNumber);
     }
 
     public void setSeatNumber(String seatNumber) {
@@ -16,8 +18,8 @@ public class Ticket extends TicketInformation implements TicketInfo {
         this.foodType = foodType;
     }
 
-    public String getSurname() {
-        return surname;
+    public String getName() {
+        return name;
     }
 
     public String getIdDocument() {
@@ -40,9 +42,10 @@ public class Ticket extends TicketInformation implements TicketInfo {
         return foodType;
     }
 
-    public String getBoardingPassNumber() {
-        return boardingPassNumber;
-    }
+    public String getCreditCard(){return creditCard;}
+
+    public String getCreditCardPassword(){return creditCardPassword;}
+
 
     public String getCarryOnBaggageNumber() {
         return carryOnBaggageNumber;

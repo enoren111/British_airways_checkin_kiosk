@@ -1,25 +1,27 @@
 package entity;
 
 public class TicketInformation {
-    protected String surname;
+    protected String name;
     protected String idDocument;
     protected String flightNumber;
     protected String bookNumber;
     protected String seatNumber;
     protected String foodType;
-    protected String boardingPassNumber;
+    protected String creditCard;
+    protected String creditCardPassword;
     protected String carryOnBaggageNumber;
     protected String counterNumber;
-        public TicketInformation(String surname, String idDocument, String flightNumber, String bookNumber,
-                                 String seatNumber, String foodType, String boardingPassNumber,
+        public TicketInformation(String name, String idDocument, String flightNumber, String bookNumber,
+                                 String seatNumber, String foodType, String creditCard, String creditCardPassword,
                                  String carryOnBaggageNumber, String counterNumber) {
-            this.surname = surname;
+            this.name = name;
             this.idDocument = idDocument;
             this.flightNumber = flightNumber;
             this.bookNumber = bookNumber;
             this.seatNumber = seatNumber;
             this.foodType = foodType;
-            this.boardingPassNumber = boardingPassNumber;
+            this.creditCard=creditCard;
+            this.creditCardPassword=creditCardPassword;
             this.carryOnBaggageNumber = carryOnBaggageNumber;
             this.counterNumber = counterNumber;
         }

@@ -3,24 +3,28 @@ package entity;
 public class FlightInformation {
 
     protected String flightNumber;
+    protected String flightDate;
     protected String boardingGate;
-    protected String boardingTime;
     protected String start;
-    protected String destination;
-    protected String enterprise;
     protected String startAcronym;
+    protected String destination;
     protected String destinationAcronym;
+    protected String boardingTime;
+    protected String flyTime;
+    protected String duration;
 
-    public FlightInformation(String flight, String boardingGate, String boardingTime, String start, String destination, String enterprise,
-                             String startAcronym, String destinationAcronym){
-        this.flightNumber = flight;
+    public FlightInformation(String flightNumber,String flightDate,String boardingGate, String start, String startAcronym,
+                             String destination,  String destinationAcronym, String boardingTime,
+                             String flyTime,String duration){
+        this.flightNumber = flightNumber;
+        this.flightDate=flightDate;
         this.boardingGate = boardingGate;
-        this.boardingTime = boardingTime;
         this.start = start;
-        this.destination = destination;
-        this.enterprise = enterprise;
         this.startAcronym=startAcronym;
+        this.destination = destination;
         this.destinationAcronym=destinationAcronym;
-
+        this.boardingTime = boardingTime;
+        this.flyTime=flyTime;
+        this.duration=duration;
     }
 }

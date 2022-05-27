@@ -1,6 +1,7 @@
 package boundary;
 
 import control.Customer;
+import control.Flight;
 import control.FlightDatabase;
 import control.Ticket;
 
@@ -41,28 +42,26 @@ public class ChooseTicket extends MainFrame{
         titlePanel.add(titleLabel);
         panel1.add(titlePanel);
         int i;
-        for(i=0;i<5;i++){
+        for(i=0;i<ticketlist.length;i++){
             if(ticketlist[i]!=null) {
-                GridLayout panelLayout = new GridLayout(1, 5);
-                JPanel ticketpanel = new JPanel();
-                ticketpanel.setLayout(panelLayout);
-                ticketpanel.add(new JPanel());
-                JTextArea numbertext = new JTextArea(20,4);
-                JTextArea tickettext = new JTextArea(20,4);
-                //tickettext.setAlignmentX(CENTER_ALIGNMENT);
-                //tickettext.setAlignmentY(CENTER_ALIGNMENT);
-                tickettext.setText("   Flight Number:"+ticketlist[i].getFlightNumber()+"\n"+
+                GridLayout panelLayout = new GridLayout(1, ticketlist.length-1);
+                JPanel ticketPanel = new JPanel();
+                ticketPanel.setLayout(panelLayout);
+                ticketPanel.add(new JPanel());
+                JTextArea numberplate = new JTextArea(20,4);
+                JTextArea ticketText = new JTextArea(20,4);
+
+                ticketText.setText("   Flight Number:"+ticketlist[i].getFlightNumber()+"\n"+
                         "   From:"+flightDatabase.searchFlight(ticketlist[i].getFlightNumber()).getStart() +"  To:"+
                         flightDatabase.searchFlight(ticketlist[i].getFlightNumber()).getDestination());
 
-                numbertext.setText("\n"+"Ticket Number:"+ticketlist[i].getBookNumber());
-                //System.out.println(ticketlist[i].getBookNumber());
-                tickettext.setOpaque(false);
-                numbertext.setOpaque(false);
-                numbertext.setFont(new Font("Arial Black", Font.BOLD, 15));
-                tickettext.setFont(new Font("Arial Black", Font.BOLD, 15));
-                ticketpanel.add(numbertext);
-                ticketpanel.add(tickettext);
+                numberplate.setText("\n"+"Ticket Number:"+ticketlist[i].getBookNumber());
+                ticketText.setOpaque(false);
+                numberplate.setOpaque(false);
+                numberplate.setFont(new Font("Arial Black", Font.BOLD, 15));
+                ticketText.setFont(new Font("Arial Black", Font.BOLD, 15));
+                ticketPanel.add(numberplate);
+                ticketPanel.add(ticketText);
 
                 int q=i;
                 ticketButton = new JButton("Confirm");
@@ -72,16 +71,16 @@ public class ChooseTicket extends MainFrame{
                     @Override
                     public void mouseClicked(MouseEvent e) {
                         System.out.println(ticketlist[q].getBookNumber());
-                        new InformationConfirm(ticketlist[q]);
+                        new InformationConfirm(ticketlist[q],flightDatabase.searchFlight(ticketlist[q].getFlightNumber()));
                         jframe.dispose();
                     }
                 });
                 JPanel subpanel =new JPanel();
-                ticketpanel.setLocation(100,100);
+                ticketPanel.setLocation(100,100);
                 subpanel.add(ticketButton);
-                ticketpanel.add( subpanel);
-                ticketpanel.add(new JPanel());
-                panel1.add(ticketpanel);
+                ticketPanel.add( subpanel);
+                ticketPanel.add(new JPanel());
+                panel1.add(ticketPanel);
             }
         }
 

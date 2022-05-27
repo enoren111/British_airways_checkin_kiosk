@@ -5,7 +5,7 @@ public interface TicketInfo {
 
     void setFoodType(String foodType) ;
 
-    String getSurname();
+    String getName();
 
     String getIdDocument();
 
@@ -17,9 +17,11 @@ public interface TicketInfo {
 
     String getFoodType();
 
-    String getBoardingPassNumber();
-
     String getCarryOnBaggageNumber();
 
     String getCounterNumber() ;
+
+    String getCreditCard();
+
+    String getCreditCardPassword();
 }

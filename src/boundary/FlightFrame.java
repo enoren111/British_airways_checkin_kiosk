@@ -188,7 +188,8 @@ public class FlightFrame extends MainFrame implements ActionListener {
 		mainPanel.setLayout(null);// Set the frame to a grid layout of 9 rows and 1 column
 		// Add a label on the first line of the frame to inform the user to complete the
 		// information editing
-		JLabel label1 = new JLabel("                                                              Please choose your seat below:");
+		JLabel label1 = new JLabel("                                                              " +
+				                    "Please choose your seat below:");
 		label1.setFont(new Font("Calibri",Font.BOLD,30));
 		label1.setForeground(Color.black);
 		label1.setBounds(0,0,1000,120);
@@ -344,7 +345,7 @@ public class FlightFrame extends MainFrame implements ActionListener {
 							}
 							CustomerDatabase.write();
 							this.dispose();
-							MealSelections selectMeal = new MealSelections(this.bookNumber, this.seatFee);
+//							MealSelections selectMeal = new MealSelections(this.bookNumber, this.seatFee);
 						}
 					}
 
@@ -369,7 +370,4 @@ public class FlightFrame extends MainFrame implements ActionListener {
 		return check;
 	}
 
-	public static void main(String[] args) {
-		new FlightFrame("123");
-	}
 }

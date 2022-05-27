@@ -20,7 +20,8 @@ public class FlightDatabase extends entity.FlightDatabase {
                 String[] ticketSequence;
                 ticketSequence = line.split(",");
                 Flight flight = new Flight(ticketSequence[0],ticketSequence[1],ticketSequence[2],ticketSequence[3],
-                        ticketSequence[4],ticketSequence[5],ticketSequence[6],ticketSequence[7]);
+                        ticketSequence[4],ticketSequence[5],ticketSequence[6],ticketSequence[7],ticketSequence[8],
+                        ticketSequence[9]);
                 flightHashSet.add(flight);
             }
         } catch (IOException e) {

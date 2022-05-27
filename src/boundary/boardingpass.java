@@ -19,11 +19,7 @@ public class boardingpass extends MainFrame implements ActionListener {
     JButton bt2=new JButton("Done");
     String bookNumber="";
 
-    public boardingpass(String bookNumber){
-
-        /*Get the information of corresponding customer.*/
-        Customer database=new Customer();
-        Ticket myTicket=database.checkBookNumber(bookNumber);
+    public boardingpass(Ticket myTicket,Flight myFlight){
 
         /*The panel used to contain the other two panels.*/
         JPanel panel1=new JPanel();
@@ -36,9 +32,9 @@ public class boardingpass extends MainFrame implements ActionListener {
         panel2.setBorder(BorderFactory.createBevelBorder(2));
         panel2.setLayout(new GridLayout(1,3,4,4));
 
-        boardingpass_bg_green p1=new boardingpass_bg_green(myTicket.getSurname(),myTicket.getBoardingPassNumber());
-        boardingpass_bg_yellow p2=new boardingpass_bg_yellow(myTicket.getSurname(),myTicket.getCarryOnBaggageNumber());
-        boardingpass_bg_blue p3=new boardingpass_bg_blue(myTicket.getSurname(),myTicket.getCounterNumber());
+        boardingpass_bg_green p1=new boardingpass_bg_green(myTicket.getName(), myFlight.getBoardingGate());
+        boardingpass_bg_yellow p2=new boardingpass_bg_yellow(myTicket.getName(),myTicket.getCarryOnBaggageNumber());
+        boardingpass_bg_blue p3=new boardingpass_bg_blue(myTicket.getName(),myTicket.getCounterNumber());
 
         p1.setPreferredSize(new Dimension(290,550));
         p2.setPreferredSize(new Dimension(290,550));

@@ -1,13 +1,15 @@
 package boundary;
 
 import control.Customer;
+import control.Flight;
+import control.FlightDatabase;
 import control.Ticket;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-/** this class is boundary.login method of booking number, passenger input the booking number to confirm unique ticket
+/** this class is boundary. Login method of booking number, passenger input the booking number to confirm unique ticket
  * @author Songyun Yang
  * @version  1.34
  */
@@ -29,7 +31,7 @@ public class LoginWay1 extends MainFrame {
     }
 
     public void init1(){
-        //set four panel, 1 panel is use to set title, other 3 is used to contain button
+        //set four panel, 1 panel is used to set title, other 3 is used to contain button
         JPanel Panel1 = new JPanel();
         JPanel Panel2 = new JPanel();
         JPanel Panel3 = new JPanel();
@@ -62,13 +64,18 @@ public class LoginWay1 extends MainFrame {
             @Override
             public void mouseClicked(MouseEvent e) {
                 Customer database = new Customer();
+                FlightDatabase flightDatabase=new FlightDatabase();
+
                 Ticket myTicket = database.checkBookNumber(bookingNumber.getText());
+
+
                 if(myTicket==null){
                     bookingNumber.setText("");
                     bookingNumber.setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.red),
                             "Wrong"));
                 }else {
-                    new InformationConfirm(myTicket);
+                    Flight myFlight= flightDatabase.searchFlight(myTicket.getFlightNumber());
+                    new InformationConfirm(myTicket,myFlight);
                     jframe.dispose();
                 }
             }
