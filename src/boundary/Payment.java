@@ -21,13 +21,13 @@ public class Payment extends MainFrame implements ActionListener {
 	JPanel mainPanel = new JPanel();
 	Flight myFlight;
 
-	public Payment(String bookNumber, int totalFee, int seatFee, int mealFee){
-		this.bookNumber=bookNumber;
+	public Payment(Ticket myTicket, int totalFee, int seatFee, int mealFee, Flight myFlight){
+		this.myTicket = myTicket;
+		this.myFlight = myFlight;
 		this.total_fee=totalFee;
 		this.seatFee=seatFee;
 		this.mealFee=mealFee;
 		database = new Customer();
-		myTicket = database.checkBookNumber(bookNumber);
 		this.foodType=myTicket.getFoodType();
 		this.seatType=myTicket.getSeatNumber();
 
@@ -76,22 +76,30 @@ public class Payment extends MainFrame implements ActionListener {
 		else {
 			panel2.setBounds(0, 280, 1200, 220);
 			panel2.setBorder(BorderFactory.createTitledBorder("Credit Card for Payment"));
+			panel2.setLayout(null);
 			jt1 = new JTextField(20);
 			jt2 = new JTextField(20);
 			jt1.setBorder(BorderFactory.createTitledBorder("Account Number"));
 			jt2.setBorder(BorderFactory.createTitledBorder("Password"));
+			jt1.setBounds(350,80,150,40);
+			jt2.setBounds(520,80,150,40);
 			panel2.add(jt1);
 			panel2.add(jt2);
 			b1 = new JButton("Pay");
+			b1.setBounds(540+150,80,80,40);
 			panel2.add(b1);
 			b1.addActionListener(this);}
 
 
 
-		b2 = new JButton("Next");
-		b2.setBounds(550,500,150,45);
-		b2.addActionListener(this);
-		mainPanel.add(b2);
+			b2 = new JButton("Next");
+			b2.setBounds(550,500,150,45);
+			b2.addActionListener(this);
+			mainPanel.add(b2);
+
+
+
+
 
 
 
@@ -109,8 +117,11 @@ public class Payment extends MainFrame implements ActionListener {
 			if ("".equals(jt1.getText()) || "".equals(jt2.getText())){
 				JOptionPane.showMessageDialog(null, "Please input your credit card number and password to complete your payment", "Payment error",
 						JOptionPane.WARNING_MESSAGE);}
-			else {
+			else if(jt1.getText().equals(myTicket.getCreditCard())&&jt2.getText().equals(myTicket.getCreditCardPassword())) {
 				JOptionPane.showMessageDialog(null, "Pay successfully, please click on 'Next' to enter the next page", "Hint",JOptionPane.PLAIN_MESSAGE);
+			}
+			else{
+				System.out.println("Wrong account number or password!");
 			}
 		}
 

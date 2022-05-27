@@ -58,10 +58,10 @@ public class MealSelection extends MainFrame implements ActionListener{
         JLabel vegetarian = new JLabel();
         JLabel halal = new JLabel();
         JLabel gourmetMenu = new JLabel();
-        ImageIcon icon1 = new ImageIcon("src\\standard.png");
-        ImageIcon icon2 = new ImageIcon("src\\vegetarian.png");
-        ImageIcon icon3 = new ImageIcon("src\\halal.png");
-        ImageIcon icon4 = new ImageIcon("src\\gourmet.png");
+        ImageIcon icon1 = new ImageIcon("gourmet.png");
+        ImageIcon icon2 = new ImageIcon("vegetarian.png");
+        ImageIcon icon3 = new ImageIcon("halal.png");
+        ImageIcon icon4 = new ImageIcon("gourmet.png");
         icon1.setImage(icon1.getImage().getScaledInstance(280,260,Image.SCALE_DEFAULT));
         icon2.setImage(icon2.getImage().getScaledInstance(280,260,Image.SCALE_DEFAULT));
         icon3.setImage(icon3.getImage().getScaledInstance(280,260,Image.SCALE_DEFAULT));
@@ -144,7 +144,7 @@ public class MealSelection extends MainFrame implements ActionListener{
                 CustomerDatabase.write();
                 this.mealFee=0;
                 this.dispose();
-                Payment pay=new Payment(this.bookNumber, this.extraFee, this.seatFee, this.mealFee);
+                Payment pay=new Payment(myTicket, this.extraFee, this.seatFee, this.mealFee,myFlight);
             }
             if(optionVegetarian.isSelected() == true&& optionStandard.isSelected() == false
                     && optionHalal.isSelected() == false && optionGourmet.isSelected() == false)
@@ -155,7 +155,7 @@ public class MealSelection extends MainFrame implements ActionListener{
                 CustomerDatabase.write();
                 this.mealFee=0;
                 this.dispose();
-                Payment pay=new Payment(this.bookNumber, this.extraFee, this.seatFee, this.mealFee);
+                Payment pay=new Payment(myTicket, this.extraFee, this.seatFee, this.mealFee,myFlight);
             }
             if(optionGourmet.isSelected() == true&& optionVegetarian.isSelected() == false
                     && optionHalal.isSelected() == false && optionStandard.isSelected() == false)
@@ -167,7 +167,7 @@ public class MealSelection extends MainFrame implements ActionListener{
                 this.mealFee=50;
                 this.extraFee=this.extraFee+50;
                 this.dispose();
-                Payment pay=new Payment(this.bookNumber, this.extraFee, this.seatFee, this.mealFee);
+                Payment pay=new Payment(myTicket, this.extraFee, this.seatFee, this.mealFee,myFlight);
             }
             if(optionHalal.isSelected() == true&& optionVegetarian.isSelected() == false
                     && optionStandard.isSelected() == false && optionGourmet.isSelected() == false)
@@ -178,7 +178,7 @@ public class MealSelection extends MainFrame implements ActionListener{
                 CustomerDatabase.write();
                 this.mealFee=0;
                 this.dispose();
-                Payment pay=new Payment(this.bookNumber, this.extraFee, this.seatFee, this.mealFee);
+                Payment pay=new Payment(myTicket, this.extraFee, this.seatFee, this.mealFee,myFlight);
             }
             if(optionStandard.isSelected() == true&&optionVegetarian.isSelected() == true
                     && optionHalal.isSelected() == false && optionGourmet.isSelected() == false) {
@@ -189,7 +189,7 @@ public class MealSelection extends MainFrame implements ActionListener{
                 this.mealFee=30;
                 this.extraFee=this.extraFee+30;
                 this.dispose();
-                Payment pay=new Payment(this.bookNumber, this.extraFee, this.seatFee, this.mealFee);
+                Payment pay=new Payment(myTicket, this.extraFee, this.seatFee, this.mealFee,myFlight);
             }
             if(optionStandard.isSelected() == true&&optionHalal.isSelected() == true&& optionVegetarian.isSelected() == false
                     && optionGourmet.isSelected() == false) {
@@ -200,7 +200,7 @@ public class MealSelection extends MainFrame implements ActionListener{
                 this.mealFee=50;
                 this.extraFee=this.extraFee+50;
                 this.dispose();
-                Payment pay=new Payment(this.bookNumber, this.extraFee, this.seatFee, this.mealFee);
+                Payment pay=new Payment(myTicket, this.extraFee, this.seatFee, this.mealFee,myFlight);
             }
             if(optionStandard.isSelected() == true&&optionGourmet.isSelected() == true&& optionVegetarian.isSelected() == false
                     && optionHalal.isSelected() == false) {
@@ -211,7 +211,7 @@ public class MealSelection extends MainFrame implements ActionListener{
                 this.mealFee=80;
                 this.extraFee=this.extraFee+80;
                 this.dispose();
-                Payment pay=new Payment(this.bookNumber, this.extraFee, this.seatFee, this.mealFee);
+                Payment pay=new Payment(myTicket, this.extraFee, this.seatFee, this.mealFee,myFlight);
             }
             if(optionVegetarian.isSelected() == true&&optionHalal.isSelected() == true
                     && optionStandard.isSelected() == false && optionGourmet.isSelected() == false) {
@@ -222,7 +222,7 @@ public class MealSelection extends MainFrame implements ActionListener{
                 this.mealFee=30;
                 this.extraFee=this.extraFee+30;
                 this.dispose();
-                Payment pay=new Payment(this.bookNumber, this.extraFee, this.seatFee, this.mealFee);
+                Payment pay=new Payment(myTicket, this.extraFee, this.seatFee, this.mealFee,myFlight);
             }
             if(optionVegetarian.isSelected() == true&&optionGourmet.isSelected() == true&& optionStandard.isSelected() == false
                     && optionHalal.isSelected() == false) {
@@ -233,7 +233,7 @@ public class MealSelection extends MainFrame implements ActionListener{
                 this.mealFee=80;
                 this.extraFee=this.extraFee+80;
                 this.dispose();
-                Payment pay=new Payment(this.bookNumber, this.extraFee, this.seatFee, this.mealFee);
+                Payment pay=new Payment(myTicket, this.extraFee, this.seatFee, this.mealFee,myFlight);
             }
             if(optionHalal.isSelected() == true&&optionGourmet.isSelected() == true&& optionVegetarian.isSelected() == false
                     && optionStandard.isSelected() == false) {
@@ -244,47 +244,47 @@ public class MealSelection extends MainFrame implements ActionListener{
                 this.mealFee=80;
                 this.extraFee=this.extraFee+80;
                 this.dispose();
-                Payment pay=new Payment(this.bookNumber, this.extraFee, this.seatFee, this.mealFee);
+                Payment pay=new Payment(myTicket, this.extraFee, this.seatFee, this.mealFee,myFlight);
             }
             if(optionStandard.isSelected() == true&&optionVegetarian.isSelected() == true&&optionHalal.isSelected() == true&& optionGourmet.isSelected() == false) {
-                this.mealChoice="Standard, Vegetarian and Halal";
+                this.mealChoice="Standard; Vegetarian and Halal";
                 myTicket.setFoodType(this.mealChoice);
                 CustomerDatabase.replace(myTicket);
                 CustomerDatabase.write();
                 this.mealFee=60;
                 this.extraFee=this.extraFee+60;
                 this.dispose();
-                Payment pay=new Payment(this.bookNumber, this.extraFee, this.seatFee, this.mealFee);
+                Payment pay=new Payment(myTicket, this.extraFee, this.seatFee, this.mealFee,myFlight);
             }
             if(optionStandard.isSelected() == true&&optionVegetarian.isSelected() == true&&optionGourmet.isSelected() == true&& optionHalal.isSelected() == false) {
-                this.mealChoice="Standard, Vegetarian and Gourmet Menu";
+                this.mealChoice="Standard; Vegetarian and Gourmet Menu";
                 myTicket.setFoodType(this.mealChoice);
                 CustomerDatabase.replace(myTicket);
                 CustomerDatabase.write();
                 this.mealFee=110;
                 this.extraFee=this.extraFee+110;
                 this.dispose();
-                Payment pay=new Payment(this.bookNumber, this.extraFee, this.seatFee, this.mealFee);
+                Payment pay=new Payment(myTicket, this.extraFee, this.seatFee, this.mealFee,myFlight);
             }
             if(optionHalal.isSelected() == true&&optionVegetarian.isSelected() == true&&optionGourmet.isSelected() == true&& optionStandard.isSelected() == false) {
-                this.mealChoice="Vegetarian, Halal and Gourmet Menu";
+                this.mealChoice="Vegetarian; Halal and Gourmet Menu";
                 myTicket.setFoodType(this.mealChoice);
                 CustomerDatabase.replace(myTicket);
                 CustomerDatabase.write();
                 this.mealFee=110;
                 this.extraFee=this.extraFee+110;
                 this.dispose();
-                Payment pay=new Payment(this.bookNumber, this.extraFee, this.seatFee, this.mealFee);
+                Payment pay=new Payment(myTicket, this.extraFee, this.seatFee, this.mealFee,myFlight);
             }
             if(optionHalal.isSelected() == true&&optionVegetarian.isSelected() == true&&optionGourmet.isSelected() == true&&optionStandard.isSelected() == true) {
-                this.mealChoice="Standard, Vegetarian, Halal and Gourmet Menu";
+                this.mealChoice="Standard; Vegetarian; Halal and Gourmet Menu";
                 myTicket.setFoodType(this.mealChoice);
                 CustomerDatabase.replace(myTicket);
                 CustomerDatabase.write();
                 this.mealFee=140;
                 this.extraFee=this.extraFee+140;
                 this.dispose();
-                Payment pay=new Payment(this.bookNumber, this.extraFee, this.seatFee, this.mealFee);
+                Payment pay=new Payment(myTicket, this.extraFee, this.seatFee, this.mealFee,myFlight);
             }
 
             if(optionStandard.isSelected() == false && optionVegetarian.isSelected() == false
