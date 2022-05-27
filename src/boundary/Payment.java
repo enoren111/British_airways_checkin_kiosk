@@ -1,6 +1,7 @@
 package boundary;
 
 import control.Customer;
+import control.Flight;
 import control.Ticket;
 
 import java.awt.*;
@@ -18,6 +19,8 @@ public class Payment extends MainFrame implements ActionListener {
 	JTextField jt1, jt2;
 	String bookNumber;
 	JPanel mainPanel = new JPanel();
+	Flight myFlight;
+
 	public Payment(String bookNumber, int totalFee, int seatFee, int mealFee){
 		this.bookNumber=bookNumber;
 		this.total_fee=totalFee;
@@ -114,7 +117,7 @@ public class Payment extends MainFrame implements ActionListener {
 		// Press the 'next' button, then enter the next page
 		else if (e.getSource() == b2) {
 			this.dispose();
-			boardingpass boarding=new boardingpass(bookNumber);
+			boardingpass boarding=new boardingpass(myTicket,myFlight);
 		}
 	}
 }

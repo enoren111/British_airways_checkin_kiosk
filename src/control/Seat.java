@@ -26,4 +26,9 @@ public class Seat extends SeatInformation implements SeatInfo{
     public String getSeatState() {
         return SeatState;
     }
+
+    @Override
+    public String toString() {
+        return SeatNumber + "," + SeatState;
+    }
 }

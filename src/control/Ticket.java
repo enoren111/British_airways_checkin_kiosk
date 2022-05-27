@@ -54,4 +54,10 @@ public class Ticket extends TicketInformation implements TicketInfo {
     public String getCounterNumber() {
         return counterNumber;
     }
+
+    @Override
+    public String toString() {
+        return  name+","+ idDocument+","+flightNumber+","+bookNumber+","+seatNumber+","+ foodType+","+creditCard+","+creditCardPassword+","+carryOnBaggageNumber+","+counterNumber;
+
+    }
 }

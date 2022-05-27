@@ -35,18 +35,21 @@ public class Seats extends SeatsInformation {
     }
 
     public void delete(String SeatNumber){
-        Seat deleteTicket;
-        deleteTicket = checkSeatNumber(SeatNumber);
-        seatList.remove(deleteTicket);
+        Seat deleteSeat;
+        deleteSeat = checkSeatNumber(SeatNumber);
+        seatList.remove(deleteSeat);
     }
 
     public void add(Seat seat){
         seatList.add(seat);
     }
+
     public void replace(Seat seat){
         delete(seat.getSeatNumber());
         add(seat);
     }
+
+
 
 
     public Seat checkSeatNumber(String SeatNumber){
