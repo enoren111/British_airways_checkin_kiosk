@@ -1,0 +1,9 @@
+AM337,May 5th 2022,New York,NYC,Los Angles,LAX,19:20,20:00,4
+CA019,May 31st 2022,Tokyo,TYO,Kaohsiung,KHH,8:20,9:00,6
+CN523,June 3rd 2022,Chicago,CHI,Beijing,PEK,13:00,13:40,12
+JL727,Jun 10th 2022,Osaka,OSA,Okinawa,OKA,16:00,16:40,7
+SQ124,Jun 13th 2022,Singapore,SGP,Bankok,BKK,
+AC153,
+BA931,
+BA872,
+UA921,
