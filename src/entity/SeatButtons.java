@@ -72,6 +72,4 @@ public class SeatButtons {
         Buttons.add(seatButton32);
 
     }
-
-
 }

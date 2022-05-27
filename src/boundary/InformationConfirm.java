@@ -174,8 +174,8 @@ public class InformationConfirm extends MainFrame {
     public void ThirdSet() {
         //The layout setting for third panel
         p3.setSize(400, 50);
-        String mySeatState=myTicket.getSeatNumber().split(",")[0];
-        if(mySeatState.equals("-1")) {
+        String mySeatState=myTicket.getSeatNumber();
+        if(!mySeatState.equals("none")) {
             l5 = new JLabel("Click the button to print");
             l5.setFont(new Font(null, Font.PLAIN, 20));
             b2 = new JButton("print");
@@ -195,7 +195,7 @@ public class InformationConfirm extends MainFrame {
                 @Override
                 public void mouseClicked(MouseEvent e) {
 
-                    new FlightFrame(myTicket.getBookNumber());
+                    new FlightFrame(myTicket,myFlight);
                     jframe.dispose();
                 }
             });
