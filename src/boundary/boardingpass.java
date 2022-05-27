@@ -32,9 +32,9 @@ public class boardingpass extends MainFrame implements ActionListener {
         panel2.setBorder(BorderFactory.createBevelBorder(2));
         panel2.setLayout(new GridLayout(1,3,4,4));
 
-        boardingpass_bg_green p1=new boardingpass_bg_green(myTicket.getName(), myFlight.getBoardingGate());
-        boardingpass_bg_yellow p2=new boardingpass_bg_yellow(myTicket.getName(),myTicket.getCarryOnBaggageNumber());
-        boardingpass_bg_blue p3=new boardingpass_bg_blue(myTicket.getName(),myTicket.getCounterNumber());
+        boardingpass_bg p1=new boardingpass_bg("boardingpass_green.png", myTicket,myFlight,"Boarding Number: ");
+        boardingpass_bg p2=new boardingpass_bg("boardingpass_yellow.png",myTicket,myFlight,"Carry-On Number: ");
+        boardingpass_bg p3=new boardingpass_bg("boardingpass_blue.png",myTicket,myFlight,"Check-In Counter: ");
 
         p1.setPreferredSize(new Dimension(290,550));
         p2.setPreferredSize(new Dimension(290,550));
@@ -68,7 +68,6 @@ public class boardingpass extends MainFrame implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if(e.getSource()==bt1){
             String[] options = { "OK ", "CANCEL " };
-            String[] option = {"Finish"};
             int n =  JOptionPane.showOptionDialog(null,"Do you want to print?",
                     "Print Choice", JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,
                     null,options,options[0]);
