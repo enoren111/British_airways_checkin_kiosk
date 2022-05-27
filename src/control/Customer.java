@@ -77,6 +77,7 @@ public class Customer extends CustomerInformation {
     }
 
     public boolean write(){
+        //return a boolean to represent if the writing method is success. ture is succeed
         boolean writeSucceed=true;
         try {
             BufferedWriter out = new BufferedWriter(new FileWriter(pathname));

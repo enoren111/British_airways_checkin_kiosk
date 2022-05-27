@@ -1,4 +1,4 @@
-package boundary;
+package entity;
 
 import boundary.FlightFrame;
 
@@ -8,6 +8,7 @@ import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.net.URL;
+import java.util.ArrayList;
 
 public class SeatButton extends JButton implements ActionListener{
     public String SeatState;
@@ -15,6 +16,8 @@ public class SeatButton extends JButton implements ActionListener{
     public String SeatType;
     //SeatType: normal type(no more extra payment); special
     public String SeatId;
+    public ArrayList<SeatButton> seats;
+
     public SeatButton(String url, int x, int y, String SeatState,String SeatType, String SeatId) {
         this.SeatType = SeatType;
         this.SeatState = SeatState;
@@ -32,10 +35,10 @@ public class SeatButton extends JButton implements ActionListener{
         }
 
 
-        if (SeatState == "-1") {
+        if (SeatState.equals("-1") ) {
             this.setBackground(Color.red);
         }
-        else if(SeatState == "0"){
+        else if(SeatState.equals("0")){
             this.setBackground(Color.white);
         }
 
@@ -44,30 +47,51 @@ public class SeatButton extends JButton implements ActionListener{
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if(this.SeatState == "0"){
+        for (SeatButton seat:seats) {
+            if (seat.SeatState.equals("1") ) {
+                seat.SeatState = "0";
+                seat.changeSeatState("white");
+            }
+        }
+        if(this.SeatState.equals("0") ){
             this.setBackground(Color.green);
             this.SeatState = "1";
+
         }
-        else if (this.SeatState == "1"){
+        else if (this.SeatState.equals("1")){
             this.setBackground(Color.white);
             this.SeatState = "0";
         }
     }
 
-    public void changeSeatState() {
-        this.setBackground(Color.red);
+    public void changeSeatState(String color) {
+        if (color.equals("red")) {
+            this.setBackground(Color.red);
+        }
+        else if (color.equals("white")) {
+            this.setBackground(Color.white);
+        }
+
+        else if (color.equals("green")) {
+            this.setBackground(Color.green);
+        }
+
     }
 
     public String getSeatType() {
-    	return this.SeatType;
+        return this.SeatType;
     }
-    
+
     public String getSeatId() {
-    	return this.SeatId;
+        return this.SeatId;
     }
-    
+
     public String getSeatState() {
-    	return this.SeatState;
+        return this.SeatState;
+    }
+
+    public void setSeats(ArrayList<SeatButton> seats) {
+        this.seats = seats;
     }
 }
 

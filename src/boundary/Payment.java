@@ -1,11 +1,8 @@
 package boundary;
 
-import boundary.FlightFrame;
-import boundary.MainFrame;
-import boundary.boardingpass;
+import control.Customer;
+import control.Ticket;
 
-import java.awt.Font;
-import java.awt.Color;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -13,100 +10,111 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 
 public class Payment extends MainFrame implements ActionListener {
-	    String seatType, foodType ;
-	    int total_fee;
-	    JButton b1,b2;
-	    JTextField jt1, jt2;
-	    String bookNumber;
-	    JPanel mainPanel = new JPanel();
-	public Payment(String foodType, String seatType, int total_fee, String bookNumber){
-		this.foodType=foodType;
-		this.seatType=seatType;
-		this.total_fee=total_fee;
+	String seatType, foodType ;
+	int total_fee, mealFee, seatFee;
+	Ticket myTicket;
+	Customer database;
+	JButton b1,b2;
+	JTextField jt1, jt2;
+	String bookNumber;
+	JPanel mainPanel = new JPanel();
+	public Payment(String bookNumber, int totalFee, int seatFee, int mealFee){
 		this.bookNumber=bookNumber;
+		this.total_fee=totalFee;
+		this.seatFee=seatFee;
+		this.mealFee=mealFee;
+		database = new Customer();
+		myTicket = database.checkBookNumber(bookNumber);
+		this.foodType=myTicket.getFoodType();
+		this.seatType=myTicket.getSeatNumber();
+
 		Container container2 = this.getContentPane();
 		container2.add(mainPanel);
-		mainPanel.setLayout(new GridLayout(4, 1));
-		JLabel label3 = new JLabel("                            Please complete your payment:");
-		label3.setFont(new Font("Calibri",Font.BOLD,40));
-		label3.setForeground(Color.RED);
-		mainPanel.add(label3);	
+		mainPanel.setSize(1200,1000);
+		mainPanel.setLayout(null);
+
+
+		JLabel label3 = new JLabel("                                                       Please complete your payment:");
+		label3.setFont(new Font("Calibri",Font.BOLD,30));
+		label3.setForeground(Color.black);
+		label3.setBounds(0,0,1000,100);
+		mainPanel.add(label3);
+
+
 		JPanel panel1 = new JPanel();
 		panel1.setBorder(BorderFactory.createTitledBorder("EXTRA OPTION"));
-		panel1.setLayout(new FlowLayout(FlowLayout.LEFT));
+		panel1.setBounds(0, 80, 1200, 200);
 		mainPanel.add(panel1);
-		JTextArea textArea = new JTextArea(35,58);
-		textArea.setLayout(new FlowLayout(FlowLayout.LEFT));
-		panel1.add(textArea);
-		if(this.foodType=="gourmet menu"&&this.seatType=="normal") {
-		textArea.setText("Your selections:" + "\n" + "meal: gourmet menu $50" + "\n" + "seat: normal $0" + "\n" + "You need to pay $"+this.total_fee);
-		textArea.setFont(new Font("Calibri",Font.BOLD,22));}
-		if(this.seatType=="special"&&this.foodType!="gourmet menu") {
-			textArea.setText("Your selections:" + "\n" + "meal: "+ this.foodType + " $0" + "\n" + "seat: special $80" + "\n" + "You need to pay $"+this.total_fee);
-			textArea.setFont(new Font("Calibri",Font.BOLD,22));}
-		if(this.foodType=="gourmet menu"&&this.seatType=="special"){
-			textArea.setText("Your selections:" + "\n" + "meal: "+ this.foodType + " $50" + "\n" + "seat: special $80" + "\n" + "You need to pay $"+this.total_fee);
-			textArea.setFont(new Font("Calibri",Font.BOLD,22));}
-		if(this.foodType!="gourmet menu"&&this.seatType=="normal"){
-			textArea.setText("Your selections:" + "\n" + "meal: "+ this.foodType + " $0" + "\n" + "seat: normal $0" + "\n" + "You need to pay $"+this.total_fee);
-			textArea.setFont(new Font("Calibri",Font.BOLD,22));}
-		
+		String strMsg1 = "You total fee: " + this.total_fee + "$" +", including";
+		String strMsg2 ="Seat: " + this.seatType+ "   , Fee:" + this.seatFee + "$";
+		String strMsg3 ="Meal: " + this.foodType+ "   , Fee:" + this.mealFee + "$";
+		String strMsg = "<html><body>" + strMsg1 + "<br>" + strMsg2 + "<br>" + strMsg3 + "<body></html>";
+		JLabel label = new JLabel(strMsg);
+		panel1.add(label);
+		label.setForeground(Color.black);
+		label.setFont(new Font("Calibri",Font.BOLD,40));
+
 		JPanel panel2 = new JPanel();
+		//BorderLayout layout=new BorderLayout();
+		//panel2.setLayout(layout);
 		mainPanel.add(panel2);
-		panel2.setLayout(new BorderLayout());
-		panel2.setBorder(BorderFactory.createTitledBorder("Credit Card for boundary.Payment"));
-		jt1 = new JTextField(20);
-		jt2 = new JTextField(20);
-		jt1.setBorder(BorderFactory.createTitledBorder("Account Number"));
-		jt2.setBorder(BorderFactory.createTitledBorder("Password"));
-		
-		JPanel panel3 = new JPanel();
-		panel2.add(panel3);
-		panel3.setLayout(new FlowLayout(FlowLayout.LEFT));
-		panel3.add(jt1);
-		panel3.add(jt2);
-		b1 = new JButton("Pay");
-		panel3.add(b1);
-		b1.addActionListener(this);
-		JLabel label4 = new JLabel("Notice:" +"\n" + "Please click on 'pay' button without inputing your credit card account and password if your cost is $0");
-		label4.setForeground(Color.RED);
-		label4.setFont(new Font("Calibri",Font.BOLD,15));
-		panel2.add(label4, BorderLayout.SOUTH);
-		
-		
-		JPanel panel4 = new JPanel();
-		mainPanel.add(panel4);
-		
-		b2 = new JButton("Back");
-		panel4.add(b2);		
+		//panel2.setBounds(0, 280, 1200, 220);
+		//It would not show the credit card panel if your selections are free
+		if(this.total_fee==0) {
+			panel2.setBounds(0, 278, 1200, 219);
+			JLabel bg = new JLabel();
+			ImageIcon icon = new ImageIcon("src\\payment.png");
+			icon.setImage(icon.getImage().getScaledInstance(1200,219,Image.SCALE_DEFAULT));
+			bg.setIcon(icon);
+			panel2.add(bg);
+			bg.setBounds(0, 0, 1200, 219);
+		}
+		//It would show the credit card panel if your selections are paying
+		else {
+			panel2.setBounds(0, 280, 1200, 220);
+			panel2.setBorder(BorderFactory.createTitledBorder("Credit Card for Payment"));
+			jt1 = new JTextField(20);
+			jt2 = new JTextField(20);
+			jt1.setBorder(BorderFactory.createTitledBorder("Account Number"));
+			jt2.setBorder(BorderFactory.createTitledBorder("Password"));
+			panel2.add(jt1);
+			panel2.add(jt2);
+			b1 = new JButton("Pay");
+			panel2.add(b1);
+			b1.addActionListener(this);}
+
+
+
+		b2 = new JButton("Next");
+		b2.setBounds(550,500,150,45);
 		b2.addActionListener(this);
-		
-		
+		mainPanel.add(b2);
+
+
+
 		init(mainPanel);
-		
+
 		this.setVisible(true);// Let the frame is visible
-		this.setTitle("Flight Check In");// Set the title of frame
+		this.setTitle("Payment Information");// Set the title of frame
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);// Let the frame can be closed
-		
+
 
 	}
 	// Override the method of the interface ActionListener
-			public void actionPerformed(ActionEvent e) {
-				if (e.getSource() == b1) {
-					if ("".equals(jt1.getText()) || "".equals(jt2.getText())){
-						JOptionPane.showMessageDialog(null, "Please input your credit card number and password to complete your payment", "boundary.Payment error",
-								JOptionPane.WARNING_MESSAGE);}
-						else {
-							this.dispose();
-							boardingpass boarding=new boardingpass(bookNumber);
-							}
-					}
-					
-				// Press the exit button, then close the program
-				else if (e.getSource() == b2) {
-					this.dispose();
-					FlightFrame myframe = new FlightFrame(bookNumber);
-					System.out.println("bookNumber");
-				}
+	public void actionPerformed(ActionEvent e) {
+		if (e.getSource() == b1) {
+			if ("".equals(jt1.getText()) || "".equals(jt2.getText())){
+				JOptionPane.showMessageDialog(null, "Please input your credit card number and password to complete your payment", "Payment error",
+						JOptionPane.WARNING_MESSAGE);}
+			else {
+				JOptionPane.showMessageDialog(null, "Pay successfully, please click on 'Next' to enter the next page", "Hint",JOptionPane.PLAIN_MESSAGE);
 			}
+		}
+
+		// Press the 'next' button, then enter the next page
+		else if (e.getSource() == b2) {
+			this.dispose();
+			boardingpass boarding=new boardingpass(bookNumber);
+		}
+	}
 }

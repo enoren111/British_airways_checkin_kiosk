@@ -1,7 +1,11 @@
 package boundary;
 
 import control.Customer;
+import control.Seat;
+import control.Seats;
 import control.Ticket;
+import entity.SeatButton;
+import entity.SeatButtons;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -11,34 +15,51 @@ import java.util.ArrayList;
 import javax.swing.*;
 
 public class FlightFrame extends MainFrame implements ActionListener {
-	JComboBox<String> ord_option, ext_option;
-	JButton b1, b2, b3;
-	int extraFee;
+
+	JButton b1, b2;
+	int seatFee;
 	String mySeatState;
 	String mySeatType;
 	String mySeatId;
 	Ticket myTicket;
-	Customer database;
+	Customer CustomerDatabase;
+	Seats SeatsDatabase;
 	String bookNumber;
 	JPanel mainPanel = new JPanel();
 
-	SeatButton seatButton1 = new SeatButton("unselected.png", 0 ,0,"0","special","1");
-	SeatButton seatButton2 = new SeatButton("unselected.png", 75 ,0,"0","special","2");
-	SeatButton seatButton3 = new SeatButton("unselected.png", 500 ,0,"0","normal","3");
-	SeatButton seatButton4 = new SeatButton("unselected.png", 550 ,0,"0","normal","4");
-	SeatButton seatButton5 = new SeatButton("unselected.png", 600 ,0,"0","normal","5");
-	SeatButton seatButton6 = new SeatButton("unselected.png", 650 ,0,"0","normal","6");
-	SeatButton seatButton7 = new SeatButton("unselected.png", 1050 ,0,"0","special","7");
-	SeatButton seatButton8 = new SeatButton("unselected.png", 1125 ,0,"0","special","8");
-	SeatButton seatButton9 = new SeatButton("unselected.png", 0 ,50,"0","special","9");
-	SeatButton seatButton10 = new SeatButton("unselected.png", 75 ,50,"0","special","10");
-	SeatButton seatButton11 = new SeatButton("unselected.png", 500 ,50,"0","normal","11");
-	SeatButton seatButton12 = new SeatButton("unselected.png", 550 ,50,"0","normal","12");
-	SeatButton seatButton13 = new SeatButton("unselected.png", 600,50,"0","normal","13");
-	SeatButton seatButton14 = new SeatButton("unselected.png", 650,50,"0","normal","14");
-	SeatButton seatButton15 = new SeatButton("unselected.png", 1050 ,50,"0","special","15");
-	SeatButton seatButton16 = new SeatButton("unselected.png", 1125 ,50,"0","special","16");
-	ArrayList<SeatButton> seats = new ArrayList<>();
+	SeatButton seatButton1;
+	SeatButton seatButton2;
+	SeatButton seatButton3;
+	SeatButton seatButton4;
+	SeatButton seatButton5;
+	SeatButton seatButton6;
+	SeatButton seatButton7;
+	SeatButton seatButton8;
+	SeatButton seatButton9;
+	SeatButton seatButton10;
+	SeatButton seatButton11;
+	SeatButton seatButton12;
+	SeatButton seatButton13;
+	SeatButton seatButton14;
+	SeatButton seatButton15;
+	SeatButton seatButton16;
+	SeatButton seatButton17;
+	SeatButton seatButton18;
+	SeatButton seatButton19;
+	SeatButton seatButton20;
+	SeatButton seatButton21;
+	SeatButton seatButton22;
+	SeatButton seatButton23;
+	SeatButton seatButton24;
+	SeatButton seatButton25;
+	SeatButton seatButton26;
+	SeatButton seatButton27;
+	SeatButton seatButton28;
+	SeatButton seatButton29;
+	SeatButton seatButton30;
+	SeatButton seatButton31;
+	SeatButton seatButton32;
+	ArrayList<SeatButton> seats = new SeatButtons().Buttons;
 
 	public FlightFrame(String bookNumber) {
 		/**
@@ -46,49 +67,116 @@ public class FlightFrame extends MainFrame implements ActionListener {
 		 * operate under the container
 		 */
 		this.bookNumber = bookNumber;
-		database = new Customer();
+		CustomerDatabase = new Customer();
+		SeatsDatabase = new Seats();
 
-		SeatButton[] seatButtons = new SeatButton[16];
-		seatButtons[0] = seatButton1;
-		seatButtons[1] = seatButton2;
-		seatButtons[2] = seatButton3;
-		seatButtons[3] = seatButton4;
-		seatButtons[4] = seatButton5;
-		seatButtons[5] = seatButton6;
-		seatButtons[6] = seatButton7;
-		seatButtons[7] = seatButton8;
-		seatButtons[8] = seatButton9;
-		seatButtons[9] = seatButton10;
-		seatButtons[10] = seatButton11;
-		seatButtons[11] = seatButton12;
-		seatButtons[12] = seatButton13;
-		seatButtons[13] = seatButton14;
-		seatButtons[14] = seatButton15;
-		seatButtons[15] = seatButton16;
+//		seatButton1 = new SeatButton("wideSeat.png", 0 ,0,"0","special","1");
+//		seatButton2 = new SeatButton("wideSeat.png", 75 ,0,"0","special","2");
+//		seatButton3 = new SeatButton("normalSeat.png", 500 ,0,"0","normal","3");
+//		seatButton4 = new SeatButton("normalSeat.png", 550 ,0,"0","normal","4");
+//		seatButton5 = new SeatButton("normalSeat.png", 600 ,0,"0","normal","5");
+//		seatButton6 = new SeatButton("normalSeat.png", 650 ,0,"0","normal","6");
+//		seatButton7 = new SeatButton("wideSeat.png", 1050 ,0,"0","special","7");
+//		seatButton8 = new SeatButton("wideSeat.png", 1125 ,0,"0","special","8");
+//		seatButton9 = new SeatButton("wideSeat.png", 0 ,70,"0","special","9");
+//		seatButton10 = new SeatButton("wideSeat.png", 75 ,70,"0","special","10");
+//		seatButton11 = new SeatButton("normalSeat.png", 500 ,70,"0","normal","11");
+//		seatButton12 = new SeatButton("normalSeat.png", 550 ,70,"0","normal","12");
+//		seatButton13 = new SeatButton("normalSeat.png", 600,70,"0","normal","13");
+//		seatButton14 = new SeatButton("normalSeat.png", 650,70,"0","normal","14");
+//		seatButton15 = new SeatButton("wideSeat.png", 1050 ,70,"0","special","15");
+//		seatButton16 = new SeatButton("wideSeat.png", 1125 ,70,"0","special","16");
+//		seatButton17 = new SeatButton("wideSeat.png", 0 ,140,"0","special","17");
+//		seatButton18 = new SeatButton("wideSeat.png", 75 ,140,"0","special","18");
+//		seatButton19 = new SeatButton("normalSeat.png", 500 ,140,"0","normal","19");
+//		seatButton20 = new SeatButton("normalSeat.png", 550 ,140,"0","normal","20");
+//		seatButton21 = new SeatButton("normalSeat.png", 600 ,140,"0","normal","21");
+//		seatButton22 = new SeatButton("normalSeat.png", 650 ,140,"0","normal","22");
+//		seatButton23 = new SeatButton("wideSeat.png", 1050 ,140,"0","special","23");
+//		seatButton24 = new SeatButton("wideSeat.png", 1125 ,140,"0","special","24");
+//		seatButton25 = new SeatButton("wideSeat.png", 0 ,210,"0","special","25");
+//		seatButton26 = new SeatButton("wideSeat.png", 75 ,210,"0","special","26");
+//		seatButton27 = new SeatButton("normalSeat.png", 500 ,210,"0","normal","27");
+//		seatButton28= new SeatButton("normalSeat.png", 550 ,210,"0","normal","28");
+//		seatButton29 = new SeatButton("normalSeat.png", 600,210,"0","normal","29");
+//		seatButton30 = new SeatButton("normalSeat.png", 650,210,"0","normal","30");
+//		seatButton31 = new SeatButton("wideSeat.png", 1050 ,210,"0","special","31");
+//		seatButton32 = new SeatButton("wideSeat.png", 1125 ,210,"0","special","32");
+//
+//		seats.add(seatButton1);
+//		seats.add(seatButton2);
+//		seats.add(seatButton3);
+//		seats.add(seatButton4);
+//		seats.add(seatButton5);
+//		seats.add(seatButton6);
+//		seats.add(seatButton7);
+//		seats.add(seatButton8);
+//		seats.add(seatButton9);
+//		seats.add(seatButton10);
+//		seats.add(seatButton11);
+//		seats.add(seatButton12);
+//		seats.add(seatButton13);
+//		seats.add(seatButton14);
+//		seats.add(seatButton15);
+//		seats.add(seatButton16);
+//		seats.add(seatButton17);
+//		seats.add(seatButton18);
+//		seats.add(seatButton19);
+//		seats.add(seatButton20);
+//		seats.add(seatButton21);
+//		seats.add(seatButton22);
+//		seats.add(seatButton23);
+//		seats.add(seatButton24);
+//		seats.add(seatButton25);
+//		seats.add(seatButton26);
+//		seats.add(seatButton27);
+//		seats.add(seatButton28);
+//		seats.add(seatButton29);
+//		seats.add(seatButton30);
+//		seats.add(seatButton31);
+//		seats.add(seatButton32);
 
-		for (Ticket ticket: database.ticketHashSet) {
+		for (SeatButton seat:seats) {
+			seat.setSeats(seats);
+		}
+
+		SeatButton[] seatButtons = new SeatButton[32];
+		for (int i = 0; i < seatButtons.length; i++) {
+			seatButtons[i] = seats.get(i);
+		}
+
+		for (Seat seat: SeatsDatabase.seatList) {
 			System.out.println("-----------------------");
-			System.out.println(ticket.toString());
-			String SeatState = ticket.getSeatNumber().split(" ")[0];
-			String SeatId = ticket.getSeatNumber().split(" ")[2];
-			System.out.println(SeatState);
-			if (SeatState.equals("-1")) {
-				System.out.println(SeatId);
+			System.out.println(seat.toString());
+			String seatState = seat.getSeatState();
+			String seatNumber = seat.getSeatNumber();
+			System.out.println(seatState);
+			if (seatState.equals("-1")) {
+				System.out.println(seatNumber);
 				for (int i = 0; i < seatButtons.length; i++) {
-					if (seatButtons[i].SeatId.equals(SeatId) ) {
+					if (seatButtons[i].SeatId.equals(seatNumber) ) {
 						seatButtons[i].SeatState = "-1";
-						seatButtons[i].changeSeatState();
+						seatButtons[i].changeSeatState("red");
+					}
+				}
+			}
+			else if (seatState.equals("1")) {
+				System.out.println(seatNumber);
+				for (int i = 0; i < seatButtons.length; i++) {
+					if (seatButtons[i].SeatId.equals(seatNumber) ) {
+						seatButtons[i].SeatState = "1";
+						seatButtons[i].changeSeatState("green");
 					}
 				}
 			}
 
 		}
 
-		System.out.println(seatButton12.SeatState);
-		myTicket = database.checkBookNumber(bookNumber);
-		mySeatState = myTicket.getSeatNumber().split(" ")[0];
-		mySeatType = myTicket.getSeatNumber().split(" ")[1];
-		mySeatId = myTicket.getSeatNumber().split(" ")[2];
+//		System.out.println(seatButton12.SeatState);
+//		myTicket = database.checkBookNumber(bookNumber);
+//		mySeatState = myTicket.getSeatNumber().split(" ")[0];
+//		mySeatType = myTicket.getSeatNumber().split(" ")[1];
+//		mySeatId = myTicket.getSeatNumber().split(" ")[2];
 //		System.out.println(mySeatState);
 //		System.out.println(mySeatType);
 //		System.out.println(mySeatId);
@@ -96,16 +184,19 @@ public class FlightFrame extends MainFrame implements ActionListener {
 
 		Container container = this.getContentPane();
 		container.add(mainPanel);
-		mainPanel.setLayout(new GridLayout(4, 1));// Set the frame to a grid layout of 9 rows and 1 column
+		mainPanel.setSize(1200,1000);
+		mainPanel.setLayout(null);// Set the frame to a grid layout of 9 rows and 1 column
 		// Add a label on the first line of the frame to inform the user to complete the
 		// information editing
-		JLabel label1 = new JLabel("                     Please choose your seat and meal below:");
+		JLabel label1 = new JLabel("                                                              Please choose your seat below:");
 		label1.setFont(new Font("Calibri",Font.BOLD,30));
 		label1.setForeground(Color.black);
+		label1.setBounds(0,0,1000,120);
 		mainPanel.add(label1);
 
 		JPanel panel1 = new JPanel();
-		panel1.setBorder(BorderFactory.createTitledBorder("Seat (a wide seat is $80)"));
+		panel1.setBounds(0,100,1200,300);
+		panel1.setBorder(BorderFactory.createTitledBorder(""));
 		panel1.setLayout(null);
 
 		JScrollPane jsp = new JScrollPane();
@@ -123,76 +214,85 @@ public class FlightFrame extends MainFrame implements ActionListener {
 		jsp.validate();
 		panel1.add(jsp);
 
-		seats.add(seatButton1);
-		seats.add(seatButton2);
-		seats.add(seatButton3);
-		seats.add(seatButton4);
-		seats.add(seatButton5);
-		seats.add(seatButton6);
-		seats.add(seatButton7);
-		seats.add(seatButton8);
-		seats.add(seatButton9);
-		seats.add(seatButton10);
-		seats.add(seatButton11);
-		seats.add(seatButton12);
-		seats.add(seatButton13);
-		seats.add(seatButton14);
-		seats.add(seatButton15);
-		seats.add(seatButton16);
-		seat_Panel_inside.add(seatButton1);
-		seat_Panel_inside.add(seatButton2);
-		seat_Panel_inside.add(seatButton3);
-		seat_Panel_inside.add(seatButton4);
-		seat_Panel_inside.add(seatButton5);
-		seat_Panel_inside.add(seatButton6);
-		seat_Panel_inside.add(seatButton7);
-		seat_Panel_inside.add(seatButton8);
-		seat_Panel_inside.add(seatButton9);
-		seat_Panel_inside.add(seatButton10);
-		seat_Panel_inside.add(seatButton11);
-		seat_Panel_inside.add(seatButton12);
-		seat_Panel_inside.add(seatButton13);
-		seat_Panel_inside.add(seatButton14);
-		seat_Panel_inside.add(seatButton15);
-		seat_Panel_inside.add(seatButton16);
+		for (SeatButton seat: seats) {
+			seat_Panel_inside.add(seat);
+		}
+
 
 
 		JPanel panel2 = new JPanel();
-		panel2.setBorder(BorderFactory.createTitledBorder("Meal"));
-		JPanel panel7 = new JPanel();
+		panel2.setBounds(0,220,1200,250);
+
+		//panel2.setBorder(BorderFactory.createTitledBorder(""));
+		panel2.setLayout(null);
+		ImageIcon wideIcon = new ImageIcon("src/boundary/wideSeat.png");
+		ImageIcon normalIcon = new ImageIcon("src/boundary/normalSeat.png");
+
+
+		JLabel wideSeat = new JLabel(wideIcon);
+		JLabel normalSeat = new JLabel(normalIcon);
+		JLabel normalSeatUnselected = new JLabel(normalIcon);
+		JLabel normalSeatSelected = new JLabel(normalIcon);
+
+		normalSeatUnselected.setOpaque(true);
+		normalSeatSelected.setOpaque(true);
+		normalSeatUnselected.setBackground(Color.green);
+		normalSeatSelected.setBackground(Color.red);
+
+
+
+		JLabel wideFont = new JLabel("Wide Seat: ");
+		JLabel normalFont = new JLabel("Normal Seat: ");
+		JLabel unselectedFont = new JLabel("Your selection: ");
+		JLabel selectedFont = new JLabel("Seat Selected: ");
+
+		wideFont.setFont(new java.awt.Font("Dialog", 1, 15));
+		normalFont.setFont(new java.awt.Font("Dialog", 1, 15));
+		unselectedFont.setFont(new java.awt.Font("Dialog", 1, 15));
+		selectedFont.setFont(new java.awt.Font("Dialog", 1, 15));
+
+		wideSeat.setBounds(240,200,50,50);
+		normalSeat.setBounds(100,200,50,50);
+		normalSeatUnselected.setBounds(600,200,50,50);
+		normalSeatSelected.setBounds(420,200,50,50);
+
+		wideFont.setBounds(160,200,100,50);
+		normalFont.setBounds(0,200,100,50);
+		unselectedFont.setBounds(480,200,150,50);
+		selectedFont.setBounds(300,200,150,50);
+
+
+		panel2.add(wideSeat);
+		panel2.add(normalSeat);
+		panel2.add(normalSeatUnselected);
+		panel2.add(normalSeatSelected);
+
+		panel2.add(wideFont);
+		panel2.add(normalFont);
+		panel2.add(unselectedFont);
+		panel2.add(selectedFont);
+
 		mainPanel.add(panel1);
 		mainPanel.add(panel2);
-		mainPanel.add(panel7);
 
-		JPanel panel3 = new JPanel();
-		JPanel panel4 = new JPanel();
-		panel3.setLayout(new FlowLayout(FlowLayout.LEFT));
-		panel4.setLayout(new FlowLayout(FlowLayout.RIGHT));
-		panel7.add(panel3);
-		panel7.add(panel4);
+
+
 		b1 = new JButton("Next step");
-		b1.setSize(200,200);
+		b1.setBounds(650,500,100,50);
 		b2 = new JButton("Back");
-		b2.setSize(300,500);
-		panel3.add(b2);
-		panel4.add(b1);
+		b2.setBounds(450,500,100,50);
+
 		b1.addActionListener(this);
 		b2.addActionListener(this);
 
+		b1.setVisible(true);
+		b2.setVisible(true);
+		mainPanel.add(b1);
+		mainPanel.add(b2);
 
-		// Create and name two panels for the selection of year and month ComboBox
-		JPanel panel5 = new JPanel();
-		panel5.setBorder(BorderFactory.createTitledBorder("ordinary option"));
-		// Insert these two panels into panel2
-		panel2.add(panel5);
-		ord_option = new JComboBox<String>();
-		panel5.add(ord_option);
-		ord_option.addItem("standard");
-		ord_option.addItem("vegetarian");
-		ord_option.addItem("halal");
-		ord_option.addItem("gourmet menu");
-		JLabel label2 = new JLabel("Gourmet menu is $50");
-		panel2.add(label2);
+
+		mainPanel.setVisible(true);
+
 
 
 		init(mainPanel);
@@ -200,42 +300,37 @@ public class FlightFrame extends MainFrame implements ActionListener {
 
 
 		this.setVisible(true);// Let the frame is visible
-		this.setTitle("Flight Check In");// Set the title of frame
+		this.setTitle("Seat Selection");// Set the title of frame
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);// Let the frame can be closed
 
 
 	}
 
 	//Calculate the total fee for extra option
-	public void calFee() {
-		if(ord_option.getSelectedItem().toString().equals("gourmet menu")) {
-			this.extraFee=50;
-		}
-		if(mySeatType.equals("special")) {
-			this.extraFee=80;
-		}
-		if(mySeatType.equals("special") && ord_option.getSelectedItem().toString().equals("gourmet menu")) {
-			this.extraFee=130;
-		}
 
-	}
 
 
 	// Override the method of the interface ActionListener
 	public void actionPerformed(ActionEvent e) {
+		if (e.getSource() == b2) {
+			System.exit(0);
+		}
 		int check = CheckSelection();
 		if (check == 0) {
-			JOptionPane.showMessageDialog(this,"You didn't choose a seat!","Warning", JOptionPane.ERROR_MESSAGE);
-		}
-		else if(check > 1) {
-			JOptionPane.showMessageDialog(this,"You choose more than one seat!","Warning", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(this,"You didn't choose a seat!","Warning",0);
 		}
 		else {
-			int sure = JOptionPane.showConfirmDialog(this,"Are you sure about your choice?","Hint", JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE);
+			this.seatFee = 0;
+			for (SeatButton seatButton :seats) {
+				if (seatButton.SeatState == "1" && seatButton.SeatType.equals("special")) {
+					this.seatFee = 80;
+				}
+			}
+			int sure = JOptionPane.showConfirmDialog(this,"Your bonus fee is: "+this.seatFee+"$"+"\n"+"Are you sure about your choice?","Hint",2,1);
 			if(sure == 0) {
 				if (e.getSource() == b1) {
 					for (SeatButton seatButton:seats) {
-						if(seatButton.SeatState.equals("1")) {
+						if(seatButton.SeatState == "1") {
 							mySeatState = "-1";
 							mySeatId = seatButton.SeatId;
 							mySeatType = seatButton.SeatType;
@@ -243,31 +338,24 @@ public class FlightFrame extends MainFrame implements ActionListener {
 							System.out.println(mySeatNumber);
 							myTicket.setSeatNumber(mySeatNumber);
 							System.out.println(myTicket.toString());
-							database.replace(myTicket);
-							for (Ticket ticket:database.ticketHashSet){
+							CustomerDatabase.replace(myTicket);
+							for (Ticket ticket:CustomerDatabase.ticketHashSet){
 								System.out.println(ticket.toString());
 							}
-							database.write();
+							CustomerDatabase.write();
+							this.dispose();
+							MealSelections selectMeal = new MealSelections(this.bookNumber, this.seatFee);
 						}
 					}
-					myTicket.setFoodType(ord_option.getSelectedItem().toString());
-					database.replace(myTicket);
-					database.write();
-					this.calFee();
-					if(!mySeatType.equals("special") && !ord_option.getSelectedItem().toString().equals("gourmet menu")) {
-						this.dispose();
-						boardingpass boarding=new boardingpass(bookNumber);
-					}
-					else {
-						this.dispose();
-						Payment pay = new Payment(ord_option.getSelectedItem().toString(), mySeatType, this.extraFee, bookNumber);
-					}
+
+					CustomerDatabase.replace(myTicket);
+					CustomerDatabase.write();
+
+
 				}
 
-				// Press the exit button, then close the program
-				else if (e.getSource() == b2) {
-					System.exit(0);
-				}
+
+
 			}
 		}
 	}
@@ -279,5 +367,9 @@ public class FlightFrame extends MainFrame implements ActionListener {
 			}
 		}
 		return check;
+	}
+
+	public static void main(String[] args) {
+		new FlightFrame("123");
 	}
 }

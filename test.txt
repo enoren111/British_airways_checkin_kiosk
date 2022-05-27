@@ -1,5 +1,0 @@
-Miles Davis,3,AM337,923,0,none,none,none,11,2,C1
-Chet Baker,1,CA019,124,-1,special,11,halal,11,1,A2
-John Coltrane,2,CN523,334,0,none,none,none,10,3,B1
-Monk Thelnosis,1,CA019,125,0,special,13,halal,11,1,A2
-Herbie Hancock,1,CA019,123,-1,normal,12,standard,11,1,A2
