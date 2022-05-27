@@ -335,9 +335,13 @@ public class FlightFrame extends MainFrame implements ActionListener {
 								if (seat.getSeatNumber().equals(seatButton.getSeatId())){
 									mySeat = seat;
 								}
+								if (!seat.getSeatNumber().equals(seatButton.getSeatId())&&seat.getSeatState().equals("1")) {
+									seat.setSeatState("0");
+									SeatsDatabase.replace(seat);
+									SeatsDatabase.write();
+								}
 							}
 							mySeat.setSeatState("-1");
-							System.out.println("qqqqqqq"+mySeat.getSeatState());
 							SeatsDatabase.replace(mySeat);
 							SeatsDatabase.write();
 							this.dispose();
