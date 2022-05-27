@@ -117,7 +117,7 @@ public class Payment extends MainFrame implements ActionListener {
 		// Press the 'next' button, then enter the next page
 		else if (e.getSource() == b2) {
 			this.dispose();
-			boardingpass boarding=new boardingpass(myTicket,myFlight);
+			new boardingpass(myTicket,myFlight);
 		}
 	}
 }
