@@ -17,19 +17,18 @@ public class Payment extends MainFrame implements ActionListener {
 	Customer database;
 	JButton b1,b2;
 	JTextField jt1, jt2;
-	String bookNumber;
 	JPanel mainPanel = new JPanel();
 	Flight myFlight;
 
-	public Payment(Ticket myTicket, int totalFee, int seatFee, int mealFee, Flight myFlight){
+	public Payment(Ticket myTicket, int seatFee, int mealFee, Flight myFlight){
 		this.myTicket = myTicket;
 		this.myFlight = myFlight;
-		this.total_fee=totalFee;
 		this.seatFee=seatFee;
 		this.mealFee=mealFee;
 		database = new Customer();
 		this.foodType=myTicket.getFoodType();
 		this.seatType=myTicket.getSeatNumber();
+		total_fee=seatFee+mealFee;
 
 		Container container2 = this.getContentPane();
 		container2.add(mainPanel);
@@ -37,7 +36,8 @@ public class Payment extends MainFrame implements ActionListener {
 		mainPanel.setLayout(null);
 
 
-		JLabel label3 = new JLabel("                                                       Please complete your payment:");
+		JLabel label3 = new JLabel("                                                       " +
+				"Please complete your payment:");
 		label3.setFont(new Font("Calibri",Font.BOLD,30));
 		label3.setForeground(Color.black);
 		label3.setBounds(0,0,1000,100);
@@ -95,9 +95,6 @@ public class Payment extends MainFrame implements ActionListener {
 			b1.addActionListener(this);
 		}
 
-
-
-
 		init(mainPanel);
 
 		this.setVisible(true);// Let the frame is visible
@@ -106,19 +103,23 @@ public class Payment extends MainFrame implements ActionListener {
 
 
 	}
+
 	// Override the method of the interface ActionListener
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == b1) {
 			if ("".equals(jt1.getText()) || "".equals(jt2.getText())){
-				JOptionPane.showMessageDialog(null, "Please input your credit card number and password to complete your payment", "Payment error",
-						JOptionPane.WARNING_MESSAGE);}
+				JOptionPane.showMessageDialog(null, "Please input your credit card number " +
+								  	           "and password to complete your payment", "Payment error",
+						                       JOptionPane.WARNING_MESSAGE);}
 			else if(jt1.getText().equals(myTicket.getCreditCard())&&jt2.getText().equals(myTicket.getCreditCardPassword())) {
 				JOptionPane.showMessageDialog(null, "Pay successfully!", "Hint",JOptionPane.PLAIN_MESSAGE);
 				this.dispose();
 				new boardingpass(myTicket,myFlight);
 			}
 			else{
-				JOptionPane.showMessageDialog(null, "Wrong account number or password!", "Hint",JOptionPane.PLAIN_MESSAGE);
+				JOptionPane.showMessageDialog(null, "Please input your credit card number " +
+								              "and password to complete your payment", "Payment error",
+						                      JOptionPane.WARNING_MESSAGE);
 			}
 		}
 

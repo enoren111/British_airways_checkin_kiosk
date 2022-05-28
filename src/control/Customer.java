@@ -45,11 +45,11 @@ public class Customer extends CustomerInformation {
     public void add(Ticket ticket){
         ticketHashSet.add(ticket);
     }
+
     public void replace(Ticket ticket){
         delete(ticket.getBookNumber());
         add(ticket);
     }
-
 
     public Ticket checkBookNumber(String bookNumber){
         for(Ticket ticket: ticketHashSet){

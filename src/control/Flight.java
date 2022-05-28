@@ -3,9 +3,9 @@ import entity.FlightInformation;
 public class Flight extends FlightInformation implements FlightInfo{
 
 
-    public Flight(String flightNumber, String flightDate, String boardingGate, String start, String startAcronym,
+    public Flight(String flightNumber,  String boardingGate,String flightDate, String start, String startAcronym,
                   String destination, String destinationAcronym, String boardingTime, String flyTime, String duration) {
-        super(flightNumber, flightDate, boardingGate, start, startAcronym, destination,
+        super(flightNumber,  boardingGate,flightDate, start, startAcronym, destination,
                 destinationAcronym, boardingTime, flyTime, duration);
     }
 
