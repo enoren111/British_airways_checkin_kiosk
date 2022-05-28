@@ -24,7 +24,7 @@ public class boardingpass_bg extends JPanel {
     public void paint(Graphics g2) {
         super.paint(g2);
         try {
-            boarding_bg= ImageIO.read(new File("boardingpass_blue.png"));
+            boarding_bg= ImageIO.read(new File(path));
         } catch (IOException e) {
             e.printStackTrace();
         }

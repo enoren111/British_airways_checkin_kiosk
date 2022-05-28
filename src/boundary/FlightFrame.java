@@ -320,7 +320,8 @@ public class FlightFrame extends MainFrame implements ActionListener {
 					this.seatFee = 80;
 				}
 			}
-			int sure = JOptionPane.showConfirmDialog(this,"Your bonus fee is: "+this.seatFee+"$"+"\n"+"Are you sure about your choice?","Hint",2,1);
+			int sure = JOptionPane.showConfirmDialog(this,"Your bonus fee is: "+this.seatFee+"$"+"\n"+
+					"Are you sure about your choice?","Hint",2,1);
 			if(sure == 0) {
 				if (e.getSource() == b1) {
 					for (SeatButton seatButton:seats) {
