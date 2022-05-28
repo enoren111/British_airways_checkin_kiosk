@@ -17,11 +17,11 @@ public class FlightDatabase extends entity.FlightDatabase {
             String line;
             while ((line = br.readLine()) != null) {
                 System.out.println(line);
-                String[] ticketSequence;
-                ticketSequence = line.split(",");
-                Flight flight = new Flight(ticketSequence[0],ticketSequence[1],ticketSequence[2],ticketSequence[3],
-                        ticketSequence[4],ticketSequence[5],ticketSequence[6],ticketSequence[7],ticketSequence[8],
-                        ticketSequence[9]);
+                String[] flightSequence;
+                flightSequence = line.split(",");
+                Flight flight = new Flight(flightSequence[0],flightSequence[1],flightSequence[2],flightSequence[3],
+                        flightSequence[4],flightSequence[5],flightSequence[6],flightSequence[7],flightSequence[8],
+                        flightSequence[9]);
                 flightHashSet.add(flight);
             }
         } catch (IOException e) {

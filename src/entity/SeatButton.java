@@ -53,15 +53,7 @@ public class SeatButton extends JButton implements ActionListener{
     public void actionPerformed(ActionEvent e) {
         for (SeatButton seatButton:seats) {
             if (seatButton.SeatState.equals("1") ) {
-                for (Seat seat: SeatsDatabase.seatList ) {
-                    if (seat.getSeatState().equals("1")) {
-                        seat.setSeatState("0");
-                        SeatsDatabase.replace(seat);
-                        SeatsDatabase.write();
-                    }
-                }
                 seatButton.SeatState = "0";
-                System.out.println(seatButton.SeatId + "  " + seatButton.getSeatState());
                 seatButton.changeSeatState("white");
             }
         }

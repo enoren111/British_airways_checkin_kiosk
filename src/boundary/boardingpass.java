@@ -34,7 +34,7 @@ public class boardingpass extends MainFrame implements ActionListener {
 
         boardingpass_bg p1=new boardingpass_bg("boardingpass_green.png", myTicket,myFlight,"Boarding Number: ");
         boardingpass_bg p2=new boardingpass_bg("boardingpass_yellow.png",myTicket,myFlight,"Carry-On Number: ");
-        boardingpass_bg p3=new boardingpass_bg("boardingpass_blue.png",myTicket,myFlight,"Check-In Counter: ");
+        boardingpass_bg p3=new boardingpass_bg("boardingpass_green.png",myTicket,myFlight,"Check-In Counter: ");
 
         p1.setPreferredSize(new Dimension(290,550));
         p2.setPreferredSize(new Dimension(290,550));
