@@ -1,10 +1,10 @@
-AM337,23A,May 5th 2022,New York,NYC,Los Angles,LAX,19:20,20:00,4
-CA019,17B,May 31st 2022,Tokyo,TYO,Kaohsiung,KHH,08:20,09:00,6
-CN523,23C,June 3rd 2022,Chicago,CHI,Beijing,PEK,13:00,13:40,12
-JL727,17D,June 10th 2022,Osaka,OSA,Okinawa,OKA,16:00,16:40,7
-SQ124,9E,June 13th 2022,Singapore,SGP,Bangkok,BKK,08:00,08:40,5
-AC153,8E,July 8th 2022,Nagoya,NGO,Sapporo,SPK,06:00,06:40,8
-BA931,9C,July 10th 2022,TAIPEI,TPE,Athens,ATH,11:30,12:10,10
-BA872,12B,June 14th 2022,Edinburgh,EDI,Madrid,MAD,12:20,12:50,12
-UA921,4D,June 23rd 2022,Lisbon,LIS,San Francisco,SFO,14:30,15:00,10
-BA782,6E,August 20th 2022,Ottawa,YOW,Portland,PDX,16:00,16:30,4
+AM337,23A,May 5th,New York,NYC,Los Angles,LAX,19:20,20:00,4
+CA019,17B,May 31st,Tokyo,TYO,Kaohsiung,KHH,08:20,09:00,6
+CN523,23C,June 3rd,Chicago,CHI,Beijing,PEK,13:00,13:40,12
+JL727,17D,June 10th,Osaka,OSA,Okinawa,OKA,16:00,16:40,7
+SQ124,9E,Jun 13th,Singapore,SGP,Bangkok,BKK,08:00,08:40,5
+AC153,8E,Jul 8th,Nagoya,NGO,Sapporo,SPK,06:00,06:40,8
+BA931,9C,Jul 10th,TAIPEI,TPE,Athens,ATH,11:30,12:10,10
+BA872,12B,Jun 14th,Edinburgh,EDI,Madrid,MAD,12:20,12:50,12
+UA921,4D,Jun 23rd,Lisbon,LIS,San Francisco,SFO,14:30,15:00,10
+BA782,6E,Aug 20th,Ottawa,YOW,Portland,PDX,16:00,16:30,4

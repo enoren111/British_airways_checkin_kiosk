@@ -109,10 +109,10 @@ public class InformationConfirm extends MainFrame {
         //The layout setting for second panel
         p2.setBorder(BorderFactory.createTitledBorder("Detail Information"));
         p2.setSize(400, 400);
-        l2 = new JLabel("Your Name:"+myTicket.getName());
-        l3 = new JLabel("Your Book number:"+myTicket.getBookNumber());
-        l4 = new JLabel("Time: 10:00~12:00");
-        JLabel l7 = new JLabel("Boarding Entrance: C7");
+        l2 = new JLabel("Your Name: "+myTicket.getName());
+        l3 = new JLabel("Your Book number: "+myTicket.getBookNumber());
+        l4 = new JLabel("Take-off Time: "+myFlight.getFlyTime()+" "+myFlight.getFightDate());
+        JLabel l7 = new JLabel("Fly Duration: "+myFlight.getDuration()+"h");
         l2.setFont(new Font(null, Font.PLAIN, 25));
         l3.setFont(new Font(null, Font.PLAIN, 25));
         l4.setFont(new Font(null, Font.PLAIN, 25));

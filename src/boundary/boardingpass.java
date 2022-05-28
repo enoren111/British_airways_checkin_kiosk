@@ -17,7 +17,6 @@ public class boardingpass extends MainFrame implements ActionListener {
 
     JButton bt1=new JButton("Print");
     JButton bt2=new JButton("Done");
-    String bookNumber="";
 
     public boardingpass(Ticket myTicket,Flight myFlight){
 
@@ -28,13 +27,12 @@ public class boardingpass extends MainFrame implements ActionListener {
         /*Show the information of the interface.*/
         JPanel panel2=new JPanel();
         panel1.add(panel2,BorderLayout.CENTER);
-        //add(panel2,BorderLayout.CENTER);
         panel2.setBorder(BorderFactory.createBevelBorder(2));
         panel2.setLayout(new GridLayout(1,3,4,4));
 
-        boardingpass_bg p1=new boardingpass_bg("boardingpass_green.png", myTicket,myFlight,"Boarding Number: ");
-        boardingpass_bg p2=new boardingpass_bg("boardingpass_yellow.png",myTicket,myFlight,"Carry-On Number: ");
-        boardingpass_bg p3=new boardingpass_bg("boardingpass_green.png",myTicket,myFlight,"Check-In Counter: ");
+        boardingpass_bg p1=new boardingpass_bg("boardingpass_blue.png", myTicket,myFlight,"Gate: ");
+        boardingpass_bg p2=new boardingpass_bg("boardingpass_yellow.png",myTicket,myFlight,"Carry-On: ");
+        boardingpass_bg p3=new boardingpass_bg("boardingpass_green.png",myTicket,myFlight,"Counter: ");
 
         p1.setPreferredSize(new Dimension(290,550));
         p2.setPreferredSize(new Dimension(290,550));

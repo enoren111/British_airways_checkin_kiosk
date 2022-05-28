@@ -17,7 +17,7 @@ public class botBar extends JPanel {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        g.drawImage(bottom,0,0,1200,80,null);
+        g.drawImage(bottom,0,0,this.getWidth(),this.getHeight(),null);
     }
 
 }
