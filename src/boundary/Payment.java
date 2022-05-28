@@ -71,6 +71,10 @@ public class Payment extends MainFrame implements ActionListener {
 			bg.setIcon(icon);
 			panel2.add(bg);
 			bg.setBounds(0, 0, 1200, 219);
+			b2 = new JButton("Next");
+			b2.setBounds(500,450,150,45);
+			b2.addActionListener(this);
+			mainPanel.add(b2);
 		}
 		//It would show the credit card panel if your selections are paying
 		else {
@@ -88,17 +92,8 @@ public class Payment extends MainFrame implements ActionListener {
 			b1 = new JButton("Pay");
 			b1.setBounds(540+150,80,80,40);
 			panel2.add(b1);
-			b1.addActionListener(this);}
-
-
-
-			b2 = new JButton("Next");
-			b2.setBounds(550,500,150,45);
-			b2.addActionListener(this);
-			mainPanel.add(b2);
-
-
-
+			b1.addActionListener(this);
+		}
 
 
 
@@ -118,7 +113,9 @@ public class Payment extends MainFrame implements ActionListener {
 				JOptionPane.showMessageDialog(null, "Please input your credit card number and password to complete your payment", "Payment error",
 						JOptionPane.WARNING_MESSAGE);}
 			else if(jt1.getText().equals(myTicket.getCreditCard())&&jt2.getText().equals(myTicket.getCreditCardPassword())) {
-				JOptionPane.showMessageDialog(null, "Pay successfully, please click on 'Next' to enter the next page", "Hint",JOptionPane.PLAIN_MESSAGE);
+				JOptionPane.showMessageDialog(null, "Pay successfully!", "Hint",JOptionPane.PLAIN_MESSAGE);
+				this.dispose();
+				new boardingpass(myTicket,myFlight);
 			}
 			else{
 				System.out.println("Wrong account number or password!");
