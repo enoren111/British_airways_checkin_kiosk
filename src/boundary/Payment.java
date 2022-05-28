@@ -118,7 +118,7 @@ public class Payment extends MainFrame implements ActionListener {
 				new boardingpass(myTicket,myFlight);
 			}
 			else{
-				System.out.println("Wrong account number or password!");
+				JOptionPane.showMessageDialog(null, "Wrong account number or password!", "Hint",JOptionPane.PLAIN_MESSAGE);
 			}
 		}
 

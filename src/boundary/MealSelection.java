@@ -135,6 +135,17 @@ public class MealSelection extends MainFrame implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == b1) {
+            Seat mySeat = new Seat("0","0");
+            for (Seat seat: SeatsDatabase.seatList) {
+                if (seat.getSeatNumber().equals(myTicket.getSeatNumber())) {
+                    seat.setSeatState("-1");
+                    mySeat = seat;
+                }
+            }
+
+            SeatsDatabase.replace(mySeat);
+            SeatsDatabase.write();
+
             if(optionStandard.isSelected() == true&& optionVegetarian.isSelected() == false
                     && optionHalal.isSelected() == false && optionGourmet.isSelected() == false)
             {
@@ -294,18 +305,10 @@ public class MealSelection extends MainFrame implements ActionListener{
             }
 
 
+
         }
-        if (e.getSource()==b2) {
+        else if (e.getSource()==b2) {
             this.dispose();
-            Seat mySeat = new Seat("0","0");
-            for (Seat seat: SeatsDatabase.seatList) {
-                if (seat.getSeatNumber().equals(myTicket.getSeatNumber())){
-                    mySeat = seat;
-                }
-            }
-            mySeat.setSeatState("1");
-            SeatsDatabase.replace(mySeat);
-            SeatsDatabase.write();
             FlightFrame seatSelection=new FlightFrame(myTicket, myFlight);
         }
     }

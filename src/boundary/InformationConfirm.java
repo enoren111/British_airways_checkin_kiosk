@@ -175,19 +175,8 @@ public class InformationConfirm extends MainFrame {
         //The layout setting for third panel
         p3.setSize(400, 50);
         String mySeatState=myTicket.getSeatNumber();
-        if(!mySeatState.equals("none")) {
-            l5 = new JLabel("Click the button to print");
-            l5.setFont(new Font(null, Font.PLAIN, 20));
-            b2 = new JButton("print");
-            b2.addMouseListener(new MouseAdapter() {
-                @Override
-                public void mouseClicked(MouseEvent e) {
-                    new boardingpass(myTicket,myFlight);
-                    jframe.dispose();
-                }
-            });
-        }
-        else{
+
+        if (mySeatState.equals("none") || myTicket.getFoodType().equals("none")){
             l5 = new JLabel("Click the button to select seats and food");
             l5.setFont(new Font(null, Font.PLAIN, 20));
             b2 = new JButton("confirm");
@@ -200,6 +189,20 @@ public class InformationConfirm extends MainFrame {
                 }
             });
         }
+
+        else {
+            l5 = new JLabel("Click the button to print");
+            l5.setFont(new Font(null, Font.PLAIN, 20));
+            b2 = new JButton("print");
+            b2.addMouseListener(new MouseAdapter() {
+                @Override
+                public void mouseClicked(MouseEvent e) {
+                    new boardingpass(myTicket,myFlight);
+                    jframe.dispose();
+                }
+            });
+        }
+
         Box box3 = Box.createHorizontalBox();
         box3.add(l5);
         box3.add(Box.createHorizontalStrut(30));

@@ -23,7 +23,6 @@ public class Seats extends SeatsInformation {
         ) {
             String line;
             while ((line = br.readLine()) != null) {
-                System.out.println(line);
                 String[] seatSequence;
                 seatSequence = line.split(",");
                 Seat seat = new Seat(seatSequence[0],seatSequence[1]);
@@ -84,15 +83,15 @@ public class Seats extends SeatsInformation {
             BufferedWriter out = new BufferedWriter(new FileWriter(pathname));
             for(Seat seat: seatList ){
                 out.write(seat.toString()+"\n");
-                System.out.println(seat.toString());
+
             }
             out.close();
-            System.out.println("");
+
         } catch (IOException e) {
 
             writeSucceed=false;
             e.printStackTrace();
-            System.out.println("");
+
         }
         return writeSucceed;
     }
