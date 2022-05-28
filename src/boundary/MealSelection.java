@@ -237,7 +237,7 @@ public class MealSelection extends MainFrame implements ActionListener{
             }
 
             this.dispose();
-            new Payment(myTicket,  this.seatFee, this.mealFee,myFlight);
+            new Payment(myTicket,this.seatFee,this.mealFee,myFlight);
 
         }
         else if (e.getSource()==b2) {
