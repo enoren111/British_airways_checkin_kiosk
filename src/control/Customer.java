@@ -65,7 +65,10 @@ public class Customer extends CustomerInformation {
         int i=0;
         for(Ticket ticket: ticketHashSet){
             if(Objects.equals(ticket.getIdDocument(), idDocument)){
-                if(surname.trim().equals(ticket.getName())){
+                String ticketName = ticket.getName();
+                String[] ticketNameset = ticketName.split(" ");
+                String ticketsurName = ticketNameset[ticketNameset.length-1];
+                if(surname.trim().equals(ticketsurName)){
                     tickets[i] = ticket;
                     i++;
                 }
