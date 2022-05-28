@@ -19,6 +19,8 @@ public class LoginWay1 extends MainFrame {
     private final JFrame jframe=this;
     private JTextField bookingNumber;
     JPanel panel1 = new JPanel();
+    Warning warning = new Warning();
+    Head1 titleLabel;
 
     public LoginWay1(){
         GridLayout gridLayout = new GridLayout(3, 1);
@@ -36,23 +38,23 @@ public class LoginWay1 extends MainFrame {
         JPanel Panel2 = new JPanel();
         JPanel Panel3 = new JPanel();
 
-        JLabel titleLabel = new JLabel("Please in put your booking number");
-        titleLabel.setFont(new Font("Arial Black", Font.BOLD, 15));
+        titleLabel = new Head1("Please in put your booking number");
         Panel1.add(titleLabel);
 
-        confirm=new JButton("confirm");
-        confirm.setSize(100,30);
+        confirm=new Button1("confirm");
+
         Panel3.add(confirm);
 
-        back=new JButton("back");
-        back.setSize(100,30);
+        back=new Button1("back");
         Panel3.add(back);
 
-        bookingNumber = new JTextField();
-        bookingNumber.setColumns(20);
-        bookingNumber.setBorder(BorderFactory.createLineBorder(Color.GRAY));
+
+        Head2 textHead = new Head2("BookingNumber:") ;
+        bookingNumber = new TextFiled1();
+        Panel2.add(textHead);
         Panel2.add(bookingNumber);
-        Panel2.setBorder(BorderFactory.createTitledBorder("bookingNumber:"));
+        Panel2.add(warning);
+        //Panel2.setBorder(BorderFactory.createTitledBorder("bookingNumber:"));
 
         panel1.add(Panel1);
         panel1.add(Panel2);
@@ -71,8 +73,9 @@ public class LoginWay1 extends MainFrame {
 
                 if(myTicket==null){
                     bookingNumber.setText("");
-                    bookingNumber.setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.red),
-                            "Wrong"));
+                    //bookingNumber.setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.red),"Wrong"));
+                    warning.setVisible(true);
+                    titleLabel.setText("Please retype.");
                 }else {
                     Flight myFlight= flightDatabase.searchFlight(myTicket.getFlightNumber());
                     new InformationConfirm(myTicket,myFlight);

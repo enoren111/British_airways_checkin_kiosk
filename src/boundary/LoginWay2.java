@@ -17,6 +17,8 @@ public class LoginWay2 extends MainFrame {
     private final JFrame jframe = this;
     private JTextField Name, idDocument;
     JPanel panel1 = new JPanel();
+    Warning warning = new Warning();
+    Head1 titleLabel;
 
     public LoginWay2() {
         GridLayout gridLayout = new GridLayout(4, 1);
@@ -35,29 +37,25 @@ public class LoginWay2 extends MainFrame {
         JPanel Panel3 = new JPanel();
         JPanel Panel4 = new JPanel();
 
-        JLabel titleLabel = new JLabel("Please input your surname and id");
-        titleLabel.setFont(new Font("Arial Black", Font.BOLD, 15));
+        titleLabel = new Head1("Please input your surname and id");
         Panel1.add(titleLabel);
 
-        confirm=new JButton("confirm");
-        confirm.setSize(100,30);
+        confirm=new Button1("confirm");
         Panel4.add(confirm);
 
-        back=new JButton("back");
-        back.setSize(100,30);
+        back=new Button1("back");
         Panel4.add(back);
 
-        Name = new JTextField();
-        Name.setColumns(20);
-        idDocument = new JTextField();
-        idDocument.setColumns(20);
-        Name.setBorder(BorderFactory.createLineBorder(Color.GRAY));
-        idDocument.setBorder(BorderFactory.createLineBorder(Color.GRAY));
+        Name = new TextFiled1();
+        idDocument = new TextFiled1();
+        Panel2.add(new Head2("   surName:"));
+        Panel3.add(new Head2("idDocument:"));
         Panel2.add(Name);
         Panel3.add(idDocument);
+        Panel3.add(warning);
 
-        Panel2.setBorder(BorderFactory.createTitledBorder("Name:"));
-        Panel3.setBorder(BorderFactory.createTitledBorder("id document:"));
+        //Panel2.setBorder(BorderFactory.createTitledBorder("Name:"));
+        //Panel3.setBorder(BorderFactory.createTitledBorder("id document:"));
 
         panel1.add(Panel1);
         panel1.add(Panel2);
@@ -82,7 +80,9 @@ public class LoginWay2 extends MainFrame {
                 Ticket[] tickets = database.checkIdDocument(Name.getText(),idDocument.getText());
                 if(tickets==null){
                     idDocument.setText("");
-                    idDocument.setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.red), "Wrong"));
+                    //idDocument.setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.red), "Wrong"));
+                    warning.setVisible(true);
+                    titleLabel.setText("Please retype");
                 }
                 else{
                     new ChooseTicket(tickets);

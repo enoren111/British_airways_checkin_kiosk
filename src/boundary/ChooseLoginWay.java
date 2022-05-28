@@ -34,20 +34,16 @@ public class ChooseLoginWay extends MainFrame {
         JPanel log2Panel = new JPanel();
         JPanel log3Panel = new JPanel();
 
-        titleLabel=new JLabel("Please choose boundary.login way");
-        titleLabel.setFont(new Font("Arial Black", Font.BOLD, 15));
+        titleLabel=new Head1("Please choose login way");
         titlePanel.add(titleLabel);
 
-        bookingNumber=new JButton("Booking number");
-        bookingNumber.setSize(100,30);
+        bookingNumber=new Button1("Booking number");
         log1Panel.add(bookingNumber);
 
-        idDocument=new JButton("id document");
-        idDocument.setSize(100,30);
+        idDocument=new Button1("id document");
         log2Panel.add(idDocument);
 
-        scanning=new JButton("scan id document");
-        scanning.setSize(100,30);
+        scanning=new Button1("scan id document");
         log3Panel.add(scanning);
 
 

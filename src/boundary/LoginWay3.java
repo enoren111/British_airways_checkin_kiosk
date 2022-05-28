@@ -36,16 +36,13 @@ public class LoginWay3 extends MainFrame {
         JPanel Panel2 = new JPanel();
         JPanel Panel3 = new JPanel();
 
-        titleLabel=new JLabel("Please in put id document on the scanning desk");
-        titleLabel.setFont(new Font("Arial Black", Font.BOLD, 15));
+        titleLabel=new Head1("Please in put id document on the scanning desk");
         Panel1.add(titleLabel);
 
-        confirm=new JButton("confirm");
-        confirm.setSize(100,30);
+        confirm=new Button1("confirm");
         Panel3.add(confirm);
 
-        back=new JButton("back");
-        back.setSize(100,30);
+        back=new Button1("back");
         Panel3.add(back);
 
         panel1.add(Panel1);
