@@ -50,7 +50,7 @@ public class Flight extends FlightInformation implements FlightInfo{
     public String toString(){
         String flightInform;
         flightInform = flightNumber+","+flightDate+","+boardingGate+","+start+","+startAcronym+","+destination+","+
-                ","+destinationAcronym+boardingTime+","+flyTime+","+duration;
+                destinationAcronym+","+boardingTime+","+flyTime+","+duration;
         return flightInform;
     }
 
