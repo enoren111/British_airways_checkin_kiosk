@@ -12,7 +12,7 @@ public class boardingpass_bg extends JPanel {
     Ticket myTicket;
     Flight myFlight;
 
-    public boardingpass_bg( String path,Ticket myTicket,Flight myFlight,String sort){
+    public boardingpass_bg(String path,Ticket myTicket,Flight myFlight,String sort){
         this.path=path;
         this.myTicket=myTicket;
         this.myFlight=myFlight;
@@ -30,8 +30,9 @@ public class boardingpass_bg extends JPanel {
         }
         Graphics2D g = (Graphics2D) g2;
         Font font1=new Font("Century", Font.PLAIN,55);
-        Font font2=new Font("Montserrat", Font.PLAIN,35);
-        Font font3=new Font("Montserrat", Font.PLAIN,15);
+        Font font2=new Font("Montserrat", Font.BOLD,35);
+        Font font3=new Font("Montserrat",Font.PLAIN,25);
+        Font font4=new Font("Montserrat", Font.PLAIN,15);
 
         g.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING,RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
         g.setFont(font1);
@@ -43,22 +44,51 @@ public class boardingpass_bg extends JPanel {
         g.setFont(font2);
         g.drawString(myTicket.getName(),55,200);
 
-        g.setFont(font3);
-        g.setColor(Color.gray);
-        g.drawString("Name",57,220);
-
-        g.setFont(font2);
-        g.setColor(Color.BLACK);
         switch (sort) {
-            case "Check-In Counter: " -> g.drawString(myTicket.getCounterNumber(), 55, 300);
-            case "Carry-On Number: " -> g.drawString(myTicket.getCarryOnBaggageNumber(), 55, 300);
-            case "Boarding Number: " -> g.drawString(myFlight.getBoardingGate(), 55, 300);
+            case "Gate: " -> {
+                g.setFont(font3);
+                g.drawString(myFlight.getFightDate(), 55, 250);
+                g.drawString(myFlight.getBoardingGate(), 225, 250);
+                g.drawString(myFlight.getFlightNumber(),55,320);
+                g.drawString(myTicket.getSeatNumber(),225,320);
+                g.drawString(myFlight.getBoardingTime(),55,390);
+                g.drawString(myFlight.getFlyTime(),225,390);
+                g.setFont(font4);
+                g.setColor(Color.gray);
+                g.drawString("Date",57,265);
+                g.drawString("Gate",227,265);
+                g.drawString("Flight",57,335);
+                g.drawString("Seat",227,335);
+                g.drawString("Boarding",57,405);
+                g.drawString("Fly-Time",227,405);
+            }
+            case "Carry-On: " ->{
+                g.setFont(font3);
+                g.drawString(myTicket.getCarryOnBaggageNumber(), 55, 250);
+                g.setFont(font4);
+                g.setColor(Color.gray);
+                g.drawString("Carry-On",57,265);
+                g.setColor(Color.BLACK);
+                g.drawString("Hint: ",57,320);
+                g.drawString("1. Power Bank are not allowed to take.",57,340);
+                g.drawString("2. Acuity things (like knives) are prohibited.",57,360);
+            }
+            case "Counter: " -> {
+                g.setFont(font3);
+                g.drawString(myTicket.getCounterNumber(), 55, 250);
+                g.setFont(font4);
+                g.setColor(Color.gray);
+                g.drawString("Counter to Check-In",57,265);
+                g.setColor(Color.BLACK);
+                g.drawString("Hint: ",57,320);
+                g.drawString("A-F are in the first floor.",57,340);
+                g.drawString("G-T are in the second floor.",57,360);
+                g.drawString("U-Z are in the third floor",57,380);
+            }
             default -> g.drawString("Something Wrong happens!", 55, 300);
         }
 
-        g.setFont(font3);
-        g.setColor(Color.gray);
-        g.drawString(sort,57,320);
 
     }
+
 }

@@ -8,7 +8,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 /** this class is use id document and surname to boundary.login. After passenger input, passenger can choose the flight
  * @author Songyun Yang
- * @version  1.234567
+ * @version  1
  */
 public class LoginWay2 extends MainFrame {
 
@@ -48,8 +48,8 @@ public class LoginWay2 extends MainFrame {
 
         Name = new TextFiled1();
         idDocument = new TextFiled1();
-        Panel2.add(new Head2("   surName:"));
-        Panel3.add(new Head2("idDocument:"));
+        Panel2.add(new Head2("       Name:"));
+        Panel3.add(new Head2("ID-Document:"));
         Panel2.add(Name);
         Panel3.add(idDocument);
         Panel3.add(warning);

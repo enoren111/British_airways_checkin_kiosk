@@ -52,8 +52,8 @@ public class ChooseTicket extends MainFrame{
                 JTextArea ticketText = new JTextArea(20,4);
 
                 ticketText.setText("   Flight Number:"+ticketlist[i].getFlightNumber()+"\n"+
-                        "   From:"+flightDatabase.searchFlight(ticketlist[i].getFlightNumber()).getStart() +"  To:"+
-                        flightDatabase.searchFlight(ticketlist[i].getFlightNumber()).getDestination());
+                        "   From:"+flightDatabase.searchFlight(ticketlist[i].getFlightNumber()).getStartAcronym() +"  To:"+
+                        flightDatabase.searchFlight(ticketlist[i].getFlightNumber()).getDestinationAcronym());
 
                 numberplate.setText("\n"+"Ticket Number:"+ticketlist[i].getBookNumber());
                 ticketText.setOpaque(false);
