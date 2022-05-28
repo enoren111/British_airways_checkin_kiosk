@@ -187,12 +187,7 @@ public class FlightFrame extends MainFrame implements ActionListener {
 		this.setTitle("Seat Selection");// Set the title of frame
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);// Let the frame can be closed
 
-
 	}
-
-	//Calculate the total fee for extra option
-
-
 
 	// Override the method of the interface ActionListener
 	public void actionPerformed(ActionEvent e) {
@@ -218,7 +213,10 @@ public class FlightFrame extends MainFrame implements ActionListener {
 						this.seatFee = 80;
 					}
 				}
-				int sure = JOptionPane.showConfirmDialog(this,"Your bonus fee is: "+this.seatFee+"$"+"\n"+"Are you sure about your choice?","Hint",2,1);
+
+				int sure = JOptionPane.showConfirmDialog(this,"Your bonus fee is: "
+						+this.seatFee+"$"+"\n"+"Are you sure about your choice?","Hint",2,1);
+
 				if(sure == 0) {
 					if (e.getSource() == b1) {
 						for (SeatButton seatButton:seats) {
@@ -229,11 +227,7 @@ public class FlightFrame extends MainFrame implements ActionListener {
 							}
 						}
 					}
-
-
-
 				}
-
 			}
 
 		}
