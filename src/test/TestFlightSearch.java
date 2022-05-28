@@ -12,7 +12,10 @@ public class TestFlightSearch {
         FlightDatabase flightDatabase = new FlightDatabase();
         Flight f1 = new Flight("JL727","17D","June 10th","Osaka","OSA",
                 "Okinawa","OKA","16:00","16:40","7");
-        Assertions.assertEquals(f1, flightDatabase.searchFlight("JL727"));
+        Assertions.assertEquals(f1.toString(), flightDatabase.searchFlight("JL727").toString());
+        Assertions.assertNull(flightDatabase.searchFlight("JAS727"));
+        Assertions.assertNull(flightDatabase.searchFlight(""));
+
 
     }
 }
