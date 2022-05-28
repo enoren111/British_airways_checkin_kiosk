@@ -6,20 +6,25 @@ import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 
-public class boardingpass_bg_green extends JPanel {
+public class boardingpass_bg extends JPanel {
     Image boarding_bg;
-    String name,boarding_num;
+    String path,sort;
+    Ticket myTicket;
+    Flight myFlight;
 
-    public boardingpass_bg_green(String name,String boarding_num){
-        this.name=name;
-        this.boarding_num=boarding_num;
+    public boardingpass_bg( String path,Ticket myTicket,Flight myFlight,String sort){
+        this.path=path;
+        this.myTicket=myTicket;
+        this.myFlight=myFlight;
+        this.sort=sort;
     }
+
 
     @Override
     public void paint(Graphics g2) {
         super.paint(g2);
         try {
-            boarding_bg= ImageIO.read(new File("boardingpass_green.png"));
+            boarding_bg= ImageIO.read(new File("boardingpass_blue.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -32,11 +37,11 @@ public class boardingpass_bg_green extends JPanel {
         g.setFont(font1);
         g.drawImage(boarding_bg,50,5,290,550,null);
 
-        g.drawString("CITY",55,70);
-        g.drawString("CITY",135,130);
+        g.drawString(myFlight.getStartAcronym(),55,70);
+        g.drawString(myFlight.getDestinationAcronym(),135,130);
 
         g.setFont(font2);
-        g.drawString(name,55,200);
+        g.drawString(myTicket.getName(),55,200);
 
         g.setFont(font3);
         g.setColor(Color.gray);
@@ -44,10 +49,16 @@ public class boardingpass_bg_green extends JPanel {
 
         g.setFont(font2);
         g.setColor(Color.BLACK);
-        g.drawString(boarding_num,55,300);
+        switch (sort) {
+            case "Check-In Counter: " -> g.drawString(myTicket.getCounterNumber(), 55, 300);
+            case "Carry-On Number: " -> g.drawString(myTicket.getCarryOnBaggageNumber(), 55, 300);
+            case "Boarding Number: " -> g.drawString(myFlight.getBoardingGate(), 55, 300);
+            default -> g.drawString("Something Wrong happens!", 55, 300);
+        }
 
         g.setFont(font3);
         g.setColor(Color.gray);
-        g.drawString("Boarding Number",57,320);
+        g.drawString(sort,57,320);
+
     }
 }

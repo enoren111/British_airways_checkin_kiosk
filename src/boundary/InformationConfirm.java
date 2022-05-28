@@ -1,6 +1,6 @@
 package boundary;
 
-import control.Customer;
+import control.Flight;
 import control.Ticket;
 
 import javax.swing.*;
@@ -13,9 +13,9 @@ import java.awt.event.MouseEvent;
 /**
  *  Title: MyFrame1.java
  *  Description:This is the screen showing the boarding information
- *  @author Richao, Li
+ *  @author Richao, Li Tianyi, Ren
  *  @since 2022.3.27
- *  @version 1.0
+ *  @version 5.0
  */
 public class InformationConfirm extends MainFrame {
 
@@ -26,7 +26,7 @@ public class InformationConfirm extends MainFrame {
     JPanel p2 = new JPanel();
     JPanel p3 = new JPanel();
     JPanel p4 = new JPanel();
-    JPanel mainpanel = new JPanel();
+    JPanel maintainer = new JPanel();
     JPanel p5 = new JPanel();
 
 
@@ -48,20 +48,18 @@ public class InformationConfirm extends MainFrame {
     GridBagConstraints gb4 = new GridBagConstraints();
     GridBagConstraints gb5 = new GridBagConstraints();
 
-    String bookNumber="";
     Ticket myTicket;
+    Flight myFlight;
 
-    public  InformationConfirm(Ticket myTicket) {
+    public  InformationConfirm(Ticket myTicket, Flight myFlight) {
 
-        mainpanel.setSize(400, 400);
-        mainpanel.setLocation(100, 100);
+        maintainer.setSize(400, 400);
+        maintainer.setLocation(100, 100);
         //Frame layout design
-        mainpanel.setLayout(g1);
+        maintainer.setLayout(g1);
 
-        this.bookNumber=bookNumber;
-
-        Customer database=new Customer();
         this.myTicket=myTicket;
+        this.myFlight=myFlight;
         //Set for first panel
         gb1.fill = GridBagConstraints.HORIZONTAL;
         gb1.weighty = 100;
@@ -86,7 +84,7 @@ public class InformationConfirm extends MainFrame {
         ThirdSet();
         ForthSet();
         FifthSet();
-        init(mainpanel);
+        init(maintainer);
         this.setVisible(true);
 
 
@@ -103,7 +101,7 @@ public class InformationConfirm extends MainFrame {
         l1.setForeground(Color.blue);
         p1.add(l1);
         g1.setConstraints(p1, gb1);
-        mainpanel.add(p1);
+        maintainer.add(p1);
     }
 
 
@@ -111,7 +109,7 @@ public class InformationConfirm extends MainFrame {
         //The layout setting for second panel
         p2.setBorder(BorderFactory.createTitledBorder("Detail Information"));
         p2.setSize(400, 400);
-        l2 = new JLabel("Your Name:"+myTicket.getSurname());
+        l2 = new JLabel("Your Name:"+myTicket.getName());
         l3 = new JLabel("Your Book number:"+myTicket.getBookNumber());
         l4 = new JLabel("Time: 10:00~12:00");
         JLabel l7 = new JLabel("Boarding Entrance: C7");
@@ -135,7 +133,7 @@ public class InformationConfirm extends MainFrame {
         box3.add(l7);
         p2.add(box3);
         g1.setConstraints(p2, gb2);
-        mainpanel.add(p2);
+        maintainer.add(p2);
     }
     public void FifthSet() {
         //The layout setting for second panel
@@ -169,22 +167,22 @@ public class InformationConfirm extends MainFrame {
         box3.add(mna4);
         p5.add(box3);
         g1.setConstraints(p5, gb5);
-        mainpanel.add(p5);
+        maintainer.add(p5);
     }
 
 
     public void ThirdSet() {
         //The layout setting for third panel
         p3.setSize(400, 50);
-        String mySeatState=myTicket.getSeatNumber().split(",")[0];
-        if(mySeatState.equals("-1")) {
+        String mySeatState=myTicket.getSeatNumber();
+        if(!mySeatState.equals("none")) {
             l5 = new JLabel("Click the button to print");
             l5.setFont(new Font(null, Font.PLAIN, 20));
             b2 = new JButton("print");
             b2.addMouseListener(new MouseAdapter() {
                 @Override
                 public void mouseClicked(MouseEvent e) {
-                    new boardingpass(myTicket.getBookNumber());
+                    new boardingpass(myTicket,myFlight);
                     jframe.dispose();
                 }
             });
@@ -197,7 +195,7 @@ public class InformationConfirm extends MainFrame {
                 @Override
                 public void mouseClicked(MouseEvent e) {
 
-                    new FlightFrame(myTicket.getBookNumber());
+                    new FlightFrame(myTicket,myFlight);
                     jframe.dispose();
                 }
             });
@@ -208,7 +206,7 @@ public class InformationConfirm extends MainFrame {
         box3.add(b2);
         p3.add(box3);
         g1.setConstraints(p3, gb3);
-        mainpanel.add(p3);
+        maintainer.add(p3);
 
 
     }
@@ -242,7 +240,7 @@ public class InformationConfirm extends MainFrame {
         box4.add(b1);
         p4.add(box4);
         g1.setConstraints(p4, gb4);
-        mainpanel.add(p4);
+        maintainer.add(p4);
     }
 }
 

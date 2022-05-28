@@ -15,7 +15,7 @@ public class LoginWay2 extends MainFrame {
     private JButton confirm, back;
     //used to close itself
     private final JFrame jframe = this;
-    private JTextField surname, idDocument;
+    private JTextField Name, idDocument;
     JPanel panel1 = new JPanel();
 
     public LoginWay2() {
@@ -47,16 +47,16 @@ public class LoginWay2 extends MainFrame {
         back.setSize(100,30);
         Panel4.add(back);
 
-        surname = new JTextField();
-        surname.setColumns(20);
+        Name = new JTextField();
+        Name.setColumns(20);
         idDocument = new JTextField();
         idDocument.setColumns(20);
-        surname.setBorder(BorderFactory.createLineBorder(Color.GRAY));
+        Name.setBorder(BorderFactory.createLineBorder(Color.GRAY));
         idDocument.setBorder(BorderFactory.createLineBorder(Color.GRAY));
-        Panel2.add(surname);
+        Panel2.add(Name);
         Panel3.add(idDocument);
 
-        Panel2.setBorder(BorderFactory.createTitledBorder("surname:"));
+        Panel2.setBorder(BorderFactory.createTitledBorder("Name:"));
         Panel3.setBorder(BorderFactory.createTitledBorder("id document:"));
 
         panel1.add(Panel1);
@@ -79,11 +79,12 @@ public class LoginWay2 extends MainFrame {
             @Override
             public void mouseClicked(MouseEvent e) {
                 Customer database = new Customer();
-                Ticket[] tickets = database.checkIdDocument(surname.getText(),idDocument.getText());
+                Ticket[] tickets = database.checkIdDocument(Name.getText(),idDocument.getText());
                 if(tickets==null){
                     idDocument.setText("");
                     idDocument.setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.red), "Wrong"));
-                }else{
+                }
+                else{
                     new ChooseTicket(tickets);
                     jframe.dispose();
                 }

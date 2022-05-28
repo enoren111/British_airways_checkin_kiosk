@@ -1,18 +1,14 @@
 package boundary;
 
-import control.Customer;
-import control.Seat;
-import control.Seats;
-import control.Ticket;
+import control.*;
 import entity.SeatButton;
 import entity.SeatButtons;
 
+import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-
-import javax.swing.*;
 
 public class FlightFrame extends MainFrame implements ActionListener {
 
@@ -22,51 +18,53 @@ public class FlightFrame extends MainFrame implements ActionListener {
 	String mySeatType;
 	String mySeatId;
 	Ticket myTicket;
+	Flight myFlight;
 	Customer CustomerDatabase;
 	Seats SeatsDatabase;
 	String bookNumber;
 	JPanel mainPanel = new JPanel();
 
-	SeatButton seatButton1;
-	SeatButton seatButton2;
-	SeatButton seatButton3;
-	SeatButton seatButton4;
-	SeatButton seatButton5;
-	SeatButton seatButton6;
-	SeatButton seatButton7;
-	SeatButton seatButton8;
-	SeatButton seatButton9;
-	SeatButton seatButton10;
-	SeatButton seatButton11;
-	SeatButton seatButton12;
-	SeatButton seatButton13;
-	SeatButton seatButton14;
-	SeatButton seatButton15;
-	SeatButton seatButton16;
-	SeatButton seatButton17;
-	SeatButton seatButton18;
-	SeatButton seatButton19;
-	SeatButton seatButton20;
-	SeatButton seatButton21;
-	SeatButton seatButton22;
-	SeatButton seatButton23;
-	SeatButton seatButton24;
-	SeatButton seatButton25;
-	SeatButton seatButton26;
-	SeatButton seatButton27;
-	SeatButton seatButton28;
-	SeatButton seatButton29;
-	SeatButton seatButton30;
-	SeatButton seatButton31;
-	SeatButton seatButton32;
+//	SeatButton seatButton1;
+//	SeatButton seatButton2;
+//	SeatButton seatButton3;
+//	SeatButton seatButton4;
+//	SeatButton seatButton5;
+//	SeatButton seatButton6;
+//	SeatButton seatButton7;
+//	SeatButton seatButton8;
+//	SeatButton seatButton9;
+//	SeatButton seatButton10;
+//	SeatButton seatButton11;
+//	SeatButton seatButton12;
+//	SeatButton seatButton13;
+//	SeatButton seatButton14;
+//	SeatButton seatButton15;
+//	SeatButton seatButton16;
+//	SeatButton seatButton17;
+//	SeatButton seatButton18;
+//	SeatButton seatButton19;
+//	SeatButton seatButton20;
+//	SeatButton seatButton21;
+//	SeatButton seatButton22;
+//	SeatButton seatButton23;
+//	SeatButton seatButton24;
+//	SeatButton seatButton25;
+//	SeatButton seatButton26;
+//	SeatButton seatButton27;
+//	SeatButton seatButton28;
+//	SeatButton seatButton29;
+//	SeatButton seatButton30;
+//	SeatButton seatButton31;
+//	SeatButton seatButton32;
 	ArrayList<SeatButton> seats = new SeatButtons().Buttons;
 
-	public FlightFrame(String bookNumber) {
+	public FlightFrame(Ticket myTicket, Flight myFlight) {
 		/**
 		 * Create container object, The operation of components in javax.swing need to
 		 * operate under the container
 		 */
-		this.bookNumber = bookNumber;
+		this.myTicket = myTicket;
+		this.myFlight = myFlight;
 		CustomerDatabase = new Customer();
 		SeatsDatabase = new Seats();
 
@@ -188,7 +186,8 @@ public class FlightFrame extends MainFrame implements ActionListener {
 		mainPanel.setLayout(null);// Set the frame to a grid layout of 9 rows and 1 column
 		// Add a label on the first line of the frame to inform the user to complete the
 		// information editing
-		JLabel label1 = new JLabel("                                                              Please choose your seat below:");
+		JLabel label1 = new JLabel("                                                              " +
+				                    "Please choose your seat below:");
 		label1.setFont(new Font("Calibri",Font.BOLD,30));
 		label1.setForeground(Color.black);
 		label1.setBounds(0,0,1000,120);
@@ -290,14 +289,9 @@ public class FlightFrame extends MainFrame implements ActionListener {
 		mainPanel.add(b1);
 		mainPanel.add(b2);
 
-
 		mainPanel.setVisible(true);
 
-
-
 		init(mainPanel);
-
-
 
 		this.setVisible(true);// Let the frame is visible
 		this.setTitle("Seat Selection");// Set the title of frame
@@ -330,21 +324,28 @@ public class FlightFrame extends MainFrame implements ActionListener {
 			if(sure == 0) {
 				if (e.getSource() == b1) {
 					for (SeatButton seatButton:seats) {
-						if(seatButton.SeatState == "1") {
+						if(seatButton.SeatState.equals("1") ) {
 							mySeatState = "-1";
-							mySeatId = seatButton.SeatId;
-							mySeatType = seatButton.SeatType;
-							String mySeatNumber = mySeatState + " " + mySeatType + " " + mySeatId;
-							System.out.println(mySeatNumber);
-							myTicket.setSeatNumber(mySeatNumber);
-							System.out.println(myTicket.toString());
+							seatButton.SeatState = "-1";
+							myTicket.setSeatNumber(seatButton.getSeatId());
 							CustomerDatabase.replace(myTicket);
-							for (Ticket ticket:CustomerDatabase.ticketHashSet){
-								System.out.println(ticket.toString());
-							}
 							CustomerDatabase.write();
+							Seat mySeat = new Seat("0","0");
+							for (Seat seat: SeatsDatabase.seatList) {
+								if (seat.getSeatNumber().equals(seatButton.getSeatId())){
+									mySeat = seat;
+								}
+								if (!seat.getSeatNumber().equals(seatButton.getSeatId())&&seat.getSeatState().equals("1")) {
+									seat.setSeatState("0");
+									SeatsDatabase.replace(seat);
+									SeatsDatabase.write();
+								}
+							}
+							mySeat.setSeatState("-1");
+							SeatsDatabase.replace(mySeat);
+							SeatsDatabase.write();
 							this.dispose();
-							MealSelections selectMeal = new MealSelections(this.bookNumber, this.seatFee);
+							MealSelection selectMeal = new MealSelection(myTicket, myFlight,this.seatFee);
 						}
 					}
 
@@ -369,7 +370,4 @@ public class FlightFrame extends MainFrame implements ActionListener {
 		return check;
 	}
 
-	public static void main(String[] args) {
-		new FlightFrame("123");
-	}
 }

@@ -27,10 +27,11 @@ public class Customer extends CustomerInformation {
                 ticketSequence = line.split(",");
                 Ticket ticket = new Ticket(ticketSequence[0],ticketSequence[1],
                         ticketSequence[2],ticketSequence[3],ticketSequence[4],ticketSequence[5],
-                        ticketSequence[6],ticketSequence[7],ticketSequence[8]);
+                        ticketSequence[6],ticketSequence[7],ticketSequence[8],ticketSequence[9]);
                 ticketHashSet.add(ticket);
             }
-        } catch (IOException e) {
+        }
+        catch (IOException e) {
             e.printStackTrace();
         }
     }
@@ -64,7 +65,7 @@ public class Customer extends CustomerInformation {
         int i=0;
         for(Ticket ticket: ticketHashSet){
             if(Objects.equals(ticket.getIdDocument(), idDocument)){
-                if(surname.trim().equals(ticket.getSurname())){
+                if(surname.trim().equals(ticket.getName())){
                     tickets[i] = ticket;
                     i++;
                 }

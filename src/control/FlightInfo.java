@@ -13,8 +13,6 @@ public interface FlightInfo {
 
     String getDestination();
 
-    String getEnterprise();
-
     String getStartAcronym();
 
     String getDestinationAcronym();

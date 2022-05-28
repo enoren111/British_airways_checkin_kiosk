@@ -1,6 +1,8 @@
 package entity;
 
 import boundary.FlightFrame;
+import control.Seat;
+import control.Seats;
 
 import javax.swing.*;
 
@@ -17,6 +19,7 @@ public class SeatButton extends JButton implements ActionListener{
     //SeatType: normal type(no more extra payment); special
     public String SeatId;
     public ArrayList<SeatButton> seats;
+    Seats SeatsDatabase;
 
     public SeatButton(String url, int x, int y, String SeatState,String SeatType, String SeatId) {
         this.SeatType = SeatType;
@@ -24,6 +27,7 @@ public class SeatButton extends JButton implements ActionListener{
         this.SeatId = SeatId;
         this.setText(SeatId);
         this.setHorizontalTextPosition(SwingConstants.CENTER);
+        SeatsDatabase = new Seats();
         URL resource = FlightFrame.class.getResource(url);
         Icon icon = new ImageIcon(resource);
         setIcon(icon);
@@ -47,10 +51,18 @@ public class SeatButton extends JButton implements ActionListener{
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        for (SeatButton seat:seats) {
-            if (seat.SeatState.equals("1") ) {
-                seat.SeatState = "0";
-                seat.changeSeatState("white");
+        for (SeatButton seatButton:seats) {
+            if (seatButton.SeatState.equals("1") ) {
+                for (Seat seat: SeatsDatabase.seatList ) {
+                    if (seat.getSeatState().equals("1")) {
+                        seat.setSeatState("0");
+                        SeatsDatabase.replace(seat);
+                        SeatsDatabase.write();
+                    }
+                }
+                seatButton.SeatState = "0";
+                System.out.println(seatButton.SeatId + "  " + seatButton.getSeatState());
+                seatButton.changeSeatState("white");
             }
         }
         if(this.SeatState.equals("0") ){
