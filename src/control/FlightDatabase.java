@@ -1,11 +1,13 @@
 package control;
 
+import entity.Flightdatabase;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Objects;
 
-public class FlightDatabase extends entity.FlightDatabase {
+public class FlightDatabase extends Flightdatabase {
 
     public  FlightDatabase(){
         loadFlight();

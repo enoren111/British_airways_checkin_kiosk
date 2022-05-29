@@ -30,9 +30,9 @@ public class boardingpass extends MainFrame implements ActionListener {
         panel2.setBorder(BorderFactory.createBevelBorder(2));
         panel2.setLayout(new GridLayout(1,3,4,4));
 
-        boardingpass_bg p1=new boardingpass_bg("boardingpass_blue.png", myTicket,myFlight,"Gate: ");
-        boardingpass_bg p2=new boardingpass_bg("boardingpass_yellow.png",myTicket,myFlight,"Carry-On: ");
-        boardingpass_bg p3=new boardingpass_bg("boardingpass_green.png",myTicket,myFlight,"Counter: ");
+        boardingpass_bg p1=new boardingpass_bg("src/image/boardingpass_blue.png", myTicket,myFlight,"Gate: ");
+        boardingpass_bg p2=new boardingpass_bg("src/image/boardingpass_yellow.png",myTicket,myFlight,"Carry-On: ");
+        boardingpass_bg p3=new boardingpass_bg("src/image/boardingpass_green.png",myTicket,myFlight,"Counter: ");
 
         p1.setPreferredSize(new Dimension(290,550));
         p2.setPreferredSize(new Dimension(290,550));
