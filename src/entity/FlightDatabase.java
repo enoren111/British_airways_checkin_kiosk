@@ -6,6 +6,6 @@ import control.Ticket;
 import java.util.HashSet;
 
 public class FlightDatabase {
-    protected String pathname = "flight.txt";
+    protected String pathname = "src/DataBase/flight.txt";
     public HashSet<Flight> flightHashSet=new HashSet<Flight>();
 }

@@ -10,7 +10,7 @@ public class SeatsInformation {
     public String pathname;
     public ArrayList<Seat> seatList;
     public SeatsInformation(String FlightNumber){
-        this.pathname = "src/SeatDataBase/"+FlightNumber+"Seat.txt";
+        this.pathname = "src/DataBase/"+FlightNumber+"Seat.txt";
         seatList = new ArrayList<>();
     }
 
