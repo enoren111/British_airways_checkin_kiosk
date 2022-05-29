@@ -1,4 +1,4 @@
-package boundary;
+package control;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -13,8 +13,8 @@ public class topBar extends JPanel {
     public void paint(Graphics g){
         super.paint(g);
         try {
-            head2 = ImageIO.read(new File("ba_masterbrand_positive.png"));
-            sky = ImageIO.read(new File("topsky.jpg"));
+            head2 = ImageIO.read(new File("src/image/britishairline.png"));
+            sky = ImageIO.read(new File("src/image/topsky.jpg"));
         } catch (IOException e) {
             e.printStackTrace();
         }

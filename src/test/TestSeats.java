@@ -3,11 +3,9 @@ import control.*;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-//import static org.junit.Assert.assertEquals;
 public class TestSeats {
-    Ticket myTicket;
     Seat seat1 = new Seat("2","0");
-    Seats seats = new Seats(myTicket.getFlightNumber());
+    Seats seats = new Seats("DataBase/AC153Seat.txt");
     Seat seat2 = new Seat("100","100");
 
     @Test

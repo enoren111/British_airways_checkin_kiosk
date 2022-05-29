@@ -1,20 +1,18 @@
 package boundary;
 
-import boundary.ChooseLoginWay;
-import boundary.MainFrame;
+import control.idPanel;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-/** this class is fake database, to test boundary.login part
+/** this class is fake database, to test Login part
  * @author Songyun Yang
  * @version  1.0
  */
 public class LoginWay3 extends MainFrame {
 
-    private JLabel titleLabel;
     private JButton confirm, back;
     private final JFrame jframe=this;
     JPanel panel1 = new JPanel();
@@ -31,13 +29,20 @@ public class LoginWay3 extends MainFrame {
     }
 
     public void init1(){
-        //set four panel, 1 panel is use to set title, other 3 is used to contain button
+        //set four panel, 1 panel is used to set title, other 3 is used to contain button
         JPanel Panel1 = new JPanel();
-        JPanel Panel2 = new JPanel();
+        JPanel Panel2 = new idPanel();
         JPanel Panel3 = new JPanel();
 
-        titleLabel=new Head1("Please in put id document on the scanning desk");
+
+        JLabel titleLabel = new Head1("Please in put id document on the scanning desk");
         Panel1.add(titleLabel);
+        Panel1.setSize(1200,200);
+        Panel1.setBackground(Color.YELLOW);
+
+        Panel2.setSize(1200,800);
+        Panel2.setBackground(Color.cyan);
+
 
         confirm=new Button1("confirm");
         Panel3.add(confirm);

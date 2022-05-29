@@ -54,10 +54,10 @@ public class MealSelection extends MainFrame implements ActionListener{
         JLabel vegetarian = new JLabel();
         JLabel halal = new JLabel();
         JLabel gourmetMenu = new JLabel();
-        ImageIcon icon1 = new ImageIcon("gourmet.png");
-        ImageIcon icon2 = new ImageIcon("vegetarian.png");
-        ImageIcon icon3 = new ImageIcon("halal.png");
-        ImageIcon icon4 = new ImageIcon("gourmet.png");
+        ImageIcon icon1 = new ImageIcon("image/standard.png");
+        ImageIcon icon2 = new ImageIcon("image/vegetarian.png");
+        ImageIcon icon3 = new ImageIcon("image/halal.png");
+        ImageIcon icon4 = new ImageIcon("image/gourmet.png");
         icon1.setImage(icon1.getImage().getScaledInstance(280,260,Image.SCALE_DEFAULT));
         icon2.setImage(icon2.getImage().getScaledInstance(280,260,Image.SCALE_DEFAULT));
         icon3.setImage(icon3.getImage().getScaledInstance(280,260,Image.SCALE_DEFAULT));

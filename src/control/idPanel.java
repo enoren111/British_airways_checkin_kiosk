@@ -1,4 +1,4 @@
-package boundary;
+package control;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -6,18 +6,20 @@ import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 
-public class botBar extends JPanel {
-    Image bottom;
+public class idPanel extends JPanel {
+    Image idcard;
 
     @Override
-    public void paint(Graphics g){
+    public void paint(Graphics g) {
         super.paint(g);
+
         try {
-            bottom = ImageIO.read(new File("bottom.jpg"));
+            idcard= ImageIO.read(new File("src/image/idcard.jpg"));
         } catch (IOException e) {
             e.printStackTrace();
         }
-        g.drawImage(bottom,0,0,this.getWidth(),this.getHeight(),null);
-    }
 
+        g.drawImage(idcard,400,0,300,200,null);
+
+    }
 }

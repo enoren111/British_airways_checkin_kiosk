@@ -1,5 +1,8 @@
 package boundary;
 
+import control.botBar;
+import control.topBar;
+
 import javax.swing.*;
 import java.awt.*;
 
