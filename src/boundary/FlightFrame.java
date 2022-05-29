@@ -25,9 +25,9 @@ public class FlightFrame extends MainFrame implements ActionListener {
 	ArrayList<SeatButton> seats;
 
 	public FlightFrame(Ticket myTicket, Flight myFlight) {
-		/**
-		 * Create container object, The operation of components in javax.swing need to
-		 * operate under the container
+		/*
+		  Create container object, The operation of components in javax.swing need to
+		  operate under the container
 		 */
 		this.myTicket = myTicket;
 		this.myFlight = myFlight;
@@ -49,19 +49,19 @@ public class FlightFrame extends MainFrame implements ActionListener {
 			String seatState = seat.getSeatState();
 			String seatNumber = seat.getSeatNumber();
 			if (seatState.equals("-1")) {
-				for (int i = 0; i < seatButtons.length; i++) {
-					if (seatButtons[i].SeatId.equals(seatNumber) ) {
-						seatButtons[i].SeatState = "-1";
-						seatButtons[i].changeSeatState("red");
+				for (SeatButton seatButton : seatButtons) {
+					if (seatButton.SeatId.equals(seatNumber)) {
+						seatButton.SeatState = "-1";
+						seatButton.changeSeatState("red");
 					}
 				}
 			}
 		}
 
-		for (int i = 0; i < seatButtons.length; i++) {
-			if (seatButtons[i].getSeatId().equals(myTicket.getSeatNumber())) {
-				seatButtons[i].SeatState = "1";
-				seatButtons[i].changeSeatState("green");
+		for (SeatButton seatButton : seatButtons) {
+			if (seatButton.getSeatId().equals(myTicket.getSeatNumber())) {
+				seatButton.SeatState = "1";
+				seatButton.changeSeatState("green");
 			}
 		}
 
@@ -104,8 +104,6 @@ public class FlightFrame extends MainFrame implements ActionListener {
 			seat_Panel_inside.add(seat);
 		}
 
-
-
 		JPanel panel2 = new JPanel();
 		panel2.setBounds(0,220,1200,250);
 
@@ -125,17 +123,15 @@ public class FlightFrame extends MainFrame implements ActionListener {
 		normalSeatUnselected.setBackground(Color.green);
 		normalSeatSelected.setBackground(Color.red);
 
-
-
 		JLabel wideFont = new JLabel("Wide Seat: ");
 		JLabel normalFont = new JLabel("Normal Seat: ");
 		JLabel unselectedFont = new JLabel("Your selection: ");
 		JLabel selectedFont = new JLabel("Seat Selected: ");
 
-		wideFont.setFont(new java.awt.Font("Dialog", 1, 15));
-		normalFont.setFont(new java.awt.Font("Dialog", 1, 15));
-		unselectedFont.setFont(new java.awt.Font("Dialog", 1, 15));
-		selectedFont.setFont(new java.awt.Font("Dialog", 1, 15));
+		wideFont.setFont(new java.awt.Font("Dialog", Font.BOLD, 15));
+		normalFont.setFont(new java.awt.Font("Dialog", Font.BOLD, 15));
+		unselectedFont.setFont(new java.awt.Font("Dialog", Font.BOLD, 15));
+		selectedFont.setFont(new java.awt.Font("Dialog", Font.BOLD, 15));
 
 		wideSeat.setBounds(240,200,50,50);
 		normalSeat.setBounds(100,200,50,50);
@@ -146,7 +142,6 @@ public class FlightFrame extends MainFrame implements ActionListener {
 		normalFont.setBounds(0,200,100,50);
 		unselectedFont.setBounds(480,200,150,50);
 		selectedFont.setBounds(300,200,150,50);
-
 
 		panel2.add(wideSeat);
 		panel2.add(normalSeat);
@@ -160,8 +155,6 @@ public class FlightFrame extends MainFrame implements ActionListener {
 
 		mainPanel.add(panel1);
 		mainPanel.add(panel2);
-
-
 
 		b1 = new JButton("Next step");
 		b1.setBounds(650,500,100,50);
@@ -201,18 +194,22 @@ public class FlightFrame extends MainFrame implements ActionListener {
 		else {
 			int check = CheckSelection();
 			if (check == 0) {
-				JOptionPane.showMessageDialog(this,"You didn't choose a seat!","Warning",0);
+				JOptionPane.showMessageDialog(this,"You didn't choose a seat!","Warning", JOptionPane.ERROR_MESSAGE);
 			}
 			else {
 				this.seatFee = 0;
 				for (SeatButton seatButton :seats) {
-					if (seatButton.SeatState == "1" && seatButton.SeatType.equals("special")) {
+					if (seatButton.SeatState.equals("1") && seatButton.SeatType.equals("special")) {
 						this.seatFee = 80;
 					}
 				}
 
-				int sure = JOptionPane.showConfirmDialog(this,"Your bonus fee is: "
-						+this.seatFee+"$"+"\n"+"Are you sure about your choice?","Hint",2,1);
+				String[] options = { "OK ", "CANCEL " };
+
+				int sure = JOptionPane.showOptionDialog(this,"Your bonus fee is: "
+						+this.seatFee+"$"+"\n"+"Are you sure about your choice?","Hint",
+						JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,
+						null,options,options[0]);
 
 				if(sure == 0) {
 					if (e.getSource() == b1) {
@@ -220,7 +217,7 @@ public class FlightFrame extends MainFrame implements ActionListener {
 							if(seatButton.SeatState.equals("1") ) {
 								myTicket.setSeatNumber(seatButton.getSeatId());
 								this.dispose();
-								MealSelection selectMeal = new MealSelection(myTicket, myFlight,this.seatFee);
+								new MealSelection(myTicket, myFlight,this.seatFee);
 							}
 						}
 					}
@@ -232,7 +229,7 @@ public class FlightFrame extends MainFrame implements ActionListener {
 	public int CheckSelection(){
 		int check = 0;
 		for (SeatButton seatButton:seats) {
-			if (seatButton.SeatState == "1"){
+			if (seatButton.SeatState.equals("1")){
 				check++;
 			}
 		}

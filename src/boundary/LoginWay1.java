@@ -1,9 +1,6 @@
 package boundary;
 
-import control.Customer;
-import control.Flight;
-import control.FlightDatabase;
-import control.Ticket;
+import control.*;
 
 import javax.swing.*;
 import java.awt.*;

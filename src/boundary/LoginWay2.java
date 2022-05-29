@@ -1,7 +1,7 @@
 package boundary;
 
-import control.Customer;
-import control.Ticket;
+import control.*;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
@@ -48,7 +48,7 @@ public class LoginWay2 extends MainFrame {
 
         Name = new TextFiled1();
         idDocument = new TextFiled1();
-        Panel2.add(new Head2("       Name:"));
+        Panel2.add(new Head2("      Surname:"));
         Panel3.add(new Head2("ID-Document:"));
         Panel2.add(Name);
         Panel3.add(idDocument);
@@ -80,7 +80,6 @@ public class LoginWay2 extends MainFrame {
                 Ticket[] tickets = database.checkIdDocument(Name.getText(),idDocument.getText());
                 if(tickets==null){
                     idDocument.setText("");
-                    //idDocument.setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.red), "Wrong"));
                     warning.setVisible(true);
                     titleLabel.setText("Please retype");
                 }

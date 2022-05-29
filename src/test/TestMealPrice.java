@@ -17,7 +17,7 @@ public class TestMealPrice {
         Assertions.assertEquals(50, new mealprice("Gourmet Menu").calculatePrice());
         Assertions.assertEquals(60, new mealprice("Standard and Gourmet Menu").calculatePrice());
         Assertions.assertEquals(20, new mealprice("Vegetarian and Halal").calculatePrice());
-        Assertions.assertEquals(70, new mealprice("Vegetarian; Halal and Gourmet Menu").calculatePrice());
+        Assertions.assertEquals(60, new mealprice("Vegetarian; Halal and Gourmet Menu").calculatePrice());
         Assertions.assertEquals(70, new mealprice("Standard; Vegetarian; Halal and Gourmet Menu").calculatePrice());
         Assertions.assertEquals(0, new mealprice("").calculatePrice());
         Assertions.assertEquals(60, new mealprice("Vegetarian and Gourmet Menu").calculatePrice());

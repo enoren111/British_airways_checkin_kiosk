@@ -1,13 +1,11 @@
 package entity;
 
 import boundary.FlightFrame;
-import control.Seat;
 import control.Seats;
 import control.Ticket;
 
 import javax.swing.*;
-
-import java.awt.Color;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.net.URL;
@@ -74,15 +72,10 @@ public class SeatButton extends JButton implements ActionListener{
     }
 
     public void changeSeatState(String color) {
-        if (color.equals("red")) {
-            this.setBackground(Color.red);
-        }
-        else if (color.equals("white")) {
-            this.setBackground(Color.white);
-        }
-
-        else if (color.equals("green")) {
-            this.setBackground(Color.green);
+        switch (color) {
+            case "red" -> this.setBackground(Color.red);
+            case "white" -> this.setBackground(Color.white);
+            case "green" -> this.setBackground(Color.green);
         }
 
     }

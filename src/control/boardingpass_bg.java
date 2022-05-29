@@ -19,6 +19,10 @@ public class boardingpass_bg extends JPanel {
         this.sort=sort;
     }
 
+    /**
+     * This method is used to paint the background of three tickets.
+     * @param g2
+     */
 
     @Override
     public void paint(Graphics g2) {

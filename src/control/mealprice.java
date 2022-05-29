@@ -6,6 +6,10 @@ public class mealprice {
         this.meals=meals;
     }
 
+    /**
+     * This method is used to generate the price of meal.
+     * @return the value of meal price
+     */
     public int calculatePrice(){
         return switch (meals) {
             case "Vegetarian", "Standard and Halal", "Halal", "Standard and Vegetarian" -> 10;

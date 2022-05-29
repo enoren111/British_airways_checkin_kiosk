@@ -15,7 +15,5 @@ public class TestFlightSearch {
         Assertions.assertEquals(f1.toString(), flightDatabase.searchFlight("JL727").toString());
         Assertions.assertNull(flightDatabase.searchFlight("JAS727"));
         Assertions.assertNull(flightDatabase.searchFlight(""));
-
-
     }
 }

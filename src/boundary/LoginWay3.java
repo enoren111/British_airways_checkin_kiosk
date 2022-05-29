@@ -1,5 +1,7 @@
 package boundary;
 
+import control.Button1;
+import control.Head1;
 import control.idPanel;
 
 import javax.swing.*;
@@ -38,11 +40,8 @@ public class LoginWay3 extends MainFrame {
         JLabel titleLabel = new Head1("Please in put id document on the scanning desk");
         Panel1.add(titleLabel);
         Panel1.setSize(1200,200);
-        Panel1.setBackground(Color.YELLOW);
 
         Panel2.setSize(1200,800);
-        Panel2.setBackground(Color.cyan);
-
 
         confirm=new Button1("confirm");
         Panel3.add(confirm);

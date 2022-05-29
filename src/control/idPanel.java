@@ -19,7 +19,7 @@ public class idPanel extends JPanel {
             e.printStackTrace();
         }
 
-        g.drawImage(idcard,400,0,300,200,null);
+        g.drawImage(idcard,450,0,300,200,null);
 
     }
 }

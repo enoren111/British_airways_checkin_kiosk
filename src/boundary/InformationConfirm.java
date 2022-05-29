@@ -5,8 +5,6 @@ import control.Ticket;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -228,12 +226,9 @@ public class InformationConfirm extends MainFrame {
         //The layout setting for forth panel
         b1 = new JButton("Exit");
         //Sets the behavior after the button is clicked
-        b1.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                new ChooseLoginWay();
-                jframe.dispose();
-            }
+        b1.addActionListener(e -> {
+            new ChooseLoginWay();
+            jframe.dispose();
         });
         Box box4 = Box.createHorizontalBox();
         l6=new JLabel("Click this button to return to the login page ");

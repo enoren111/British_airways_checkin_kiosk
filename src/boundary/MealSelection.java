@@ -114,14 +114,9 @@ public class MealSelection extends MainFrame implements ActionListener{
         mainPanel.add(b1);
         mainPanel.add(b2);
 
-
         mainPanel.setVisible(true);
 
-
-
         init(mainPanel);
-
-
 
         this.setVisible(true);// Let the frame is visible
         this.setTitle("Meal Selection");// Set the title of frame
@@ -132,114 +127,106 @@ public class MealSelection extends MainFrame implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == b1) {
-            Seat mySeat = new Seat("0","0");
-            for (Seat seat: SeatsDatabase.seatList) {
-                if (seat.getSeatNumber().equals(myTicket.getSeatNumber())) {
-                    seat.setSeatState("-1");
-                    mySeat = seat;
-                }
-            }
-
-            SeatsDatabase.replace(mySeat);
-            SeatsDatabase.write();
-
-            if(optionStandard.isSelected() && !optionVegetarian.isSelected()
-                    && !optionHalal.isSelected() && !optionGourmet.isSelected())
-            {
-                this.mealChoice="Standard";
-                myTicket.setFoodType(this.mealChoice);
-                mealFee=new mealprice(mealChoice).calculatePrice();
-            }
-            if(optionVegetarian.isSelected() && !optionStandard.isSelected()
-                    && !optionHalal.isSelected() && !optionGourmet.isSelected())
-            {
-                this.mealChoice="Vegetarian";
-                myTicket.setFoodType(this.mealChoice);
-                mealFee=new mealprice(mealChoice).calculatePrice();
-
-            }
-            if(optionGourmet.isSelected() && !optionVegetarian.isSelected()
-                    && !optionHalal.isSelected() && !optionStandard.isSelected())
-            {
-                this.mealChoice="Gourmet Menu";
-                myTicket.setFoodType(this.mealChoice);
-                mealFee=new mealprice(mealChoice).calculatePrice();
-            }
-            if(optionHalal.isSelected() && !optionVegetarian.isSelected()
-                    && !optionStandard.isSelected() && !optionGourmet.isSelected())
-            {
-                this.mealChoice="Halal";
-                myTicket.setFoodType(this.mealChoice);
-                mealFee=new mealprice(mealChoice).calculatePrice();
-            }
-            if(optionStandard.isSelected() && optionVegetarian.isSelected()
-                    && !optionHalal.isSelected() && !optionGourmet.isSelected()) {
-                this.mealChoice="Standard and Vegetarian";
-                myTicket.setFoodType(this.mealChoice);
-                mealFee=new mealprice(mealChoice).calculatePrice();
-            }
-            if(optionStandard.isSelected() && optionHalal.isSelected() && !optionVegetarian.isSelected()
-                    && !optionGourmet.isSelected()) {
-                this.mealChoice="Standard and Halal";
-                myTicket.setFoodType(this.mealChoice);
-                mealFee=new mealprice(mealChoice).calculatePrice();
-            }
-            if(optionStandard.isSelected() && optionGourmet.isSelected() && !optionVegetarian.isSelected()
-                    && !optionHalal.isSelected()) {
-                this.mealChoice="Standard and Gourmet Menu";
-                myTicket.setFoodType(this.mealChoice);
-                mealFee=new mealprice(mealChoice).calculatePrice();
-            }
-            if(optionVegetarian.isSelected() && optionHalal.isSelected()
-                    && !optionStandard.isSelected() && !optionGourmet.isSelected()) {
-                this.mealChoice="Vegetarian and Halal";
-                myTicket.setFoodType(this.mealChoice);
-                mealFee=new mealprice(mealChoice).calculatePrice();
-            }
-            if(optionVegetarian.isSelected() && optionGourmet.isSelected() && !optionStandard.isSelected()
-                    && !optionHalal.isSelected()) {
-                this.mealChoice="Vegetarian and Gourmet Menu";
-                myTicket.setFoodType(this.mealChoice);
-                mealFee=new mealprice(mealChoice).calculatePrice();
-            }
-            if(optionHalal.isSelected() && optionGourmet.isSelected() && !optionVegetarian.isSelected()
-                    && !optionStandard.isSelected()) {
-                this.mealChoice="Halal and Gourmet Menu";
-                myTicket.setFoodType(this.mealChoice);
-                mealFee=new mealprice(mealChoice).calculatePrice();
-            }
-            if(optionStandard.isSelected() && optionVegetarian.isSelected() && optionHalal.isSelected() && !optionGourmet.isSelected()) {
-                this.mealChoice="Standard; Vegetarian and Halal";
-                myTicket.setFoodType(this.mealChoice);
-                mealFee=new mealprice(mealChoice).calculatePrice();
-            }
-            if(optionStandard.isSelected() && optionVegetarian.isSelected() && optionGourmet.isSelected() && !optionHalal.isSelected()) {
-                this.mealChoice="Standard; Vegetarian and Gourmet Menu";
-                myTicket.setFoodType(mealChoice);
-                mealFee=new mealprice(mealChoice).calculatePrice();
-            }
-            if(optionHalal.isSelected() && optionVegetarian.isSelected() && optionGourmet.isSelected() && !optionStandard.isSelected()) {
-                this.mealChoice="Vegetarian; Halal and Gourmet Menu";
-                myTicket.setFoodType(this.mealChoice);
-
-            }
-            if(optionHalal.isSelected() && optionVegetarian.isSelected() && optionGourmet.isSelected() && optionStandard.isSelected()) {
-                this.mealChoice="Standard; Vegetarian; Halal and Gourmet Menu";
-                myTicket.setFoodType(this.mealChoice);
-
-            }
 
             if(!optionStandard.isSelected() && !optionVegetarian.isSelected()
                     && !optionHalal.isSelected() && !optionGourmet.isSelected())
             {
-                JOptionPane.showMessageDialog(null, "Please choose your meals", "Warning",
-                        JOptionPane.WARNING_MESSAGE);
+                String[] options={"OK"};
+                JOptionPane.showOptionDialog(null, "Please choose your meals", "Warning",
+                        JOptionPane.YES_NO_OPTION,JOptionPane.WARNING_MESSAGE,
+                        null,options,options[0]);
             }
-            CustomerDatabase.replace(myTicket);
-            CustomerDatabase.write();
-            this.dispose();
-            new Payment(myTicket,this.seatFee,this.mealFee,myFlight);
 
+            else {
+                if(optionStandard.isSelected() && !optionVegetarian.isSelected()
+                        && !optionHalal.isSelected() && !optionGourmet.isSelected())
+                {
+                    this.mealChoice="Standard";
+                    myTicket.setFoodType(this.mealChoice);
+                    mealFee=new mealprice(mealChoice).calculatePrice();
+                }
+                if(optionVegetarian.isSelected() && !optionStandard.isSelected()
+                        && !optionHalal.isSelected() && !optionGourmet.isSelected())
+                {
+                    this.mealChoice="Vegetarian";
+                    myTicket.setFoodType(this.mealChoice);
+                    mealFee=new mealprice(mealChoice).calculatePrice();
+
+                }
+                if(optionGourmet.isSelected() && !optionVegetarian.isSelected()
+                        && !optionHalal.isSelected() && !optionStandard.isSelected())
+                {
+                    this.mealChoice="Gourmet Menu";
+                    myTicket.setFoodType(this.mealChoice);
+                    mealFee=new mealprice(mealChoice).calculatePrice();
+                }
+                if(optionHalal.isSelected() && !optionVegetarian.isSelected()
+                        && !optionStandard.isSelected() && !optionGourmet.isSelected())
+                {
+                    this.mealChoice="Halal";
+                    myTicket.setFoodType(this.mealChoice);
+                    mealFee=new mealprice(mealChoice).calculatePrice();
+                }
+                if(optionStandard.isSelected() && optionVegetarian.isSelected()
+                        && !optionHalal.isSelected() && !optionGourmet.isSelected()) {
+                    this.mealChoice="Standard and Vegetarian";
+                    myTicket.setFoodType(this.mealChoice);
+                    mealFee=new mealprice(mealChoice).calculatePrice();
+                }
+                if(optionStandard.isSelected() && optionHalal.isSelected() && !optionVegetarian.isSelected()
+                        && !optionGourmet.isSelected()) {
+                    this.mealChoice="Standard and Halal";
+                    myTicket.setFoodType(this.mealChoice);
+                    mealFee=new mealprice(mealChoice).calculatePrice();
+                }
+                if(optionStandard.isSelected() && optionGourmet.isSelected() && !optionVegetarian.isSelected()
+                        && !optionHalal.isSelected()) {
+                    this.mealChoice="Standard and Gourmet Menu";
+                    myTicket.setFoodType(this.mealChoice);
+                    mealFee=new mealprice(mealChoice).calculatePrice();
+                }
+                if(optionVegetarian.isSelected() && optionHalal.isSelected()
+                        && !optionStandard.isSelected() && !optionGourmet.isSelected()) {
+                    this.mealChoice="Vegetarian and Halal";
+                    myTicket.setFoodType(this.mealChoice);
+                    mealFee=new mealprice(mealChoice).calculatePrice();
+                }
+                if(optionVegetarian.isSelected() && optionGourmet.isSelected() && !optionStandard.isSelected()
+                        && !optionHalal.isSelected()) {
+                    this.mealChoice="Vegetarian and Gourmet Menu";
+                    myTicket.setFoodType(this.mealChoice);
+                    mealFee=new mealprice(mealChoice).calculatePrice();
+                }
+                if(optionHalal.isSelected() && optionGourmet.isSelected() && !optionVegetarian.isSelected()
+                        && !optionStandard.isSelected()) {
+                    this.mealChoice="Halal and Gourmet Menu";
+                    myTicket.setFoodType(this.mealChoice);
+                    mealFee=new mealprice(mealChoice).calculatePrice();
+                }
+                if(optionStandard.isSelected() && optionVegetarian.isSelected() && optionHalal.isSelected() && !optionGourmet.isSelected()) {
+                    this.mealChoice="Standard; Vegetarian and Halal";
+                    myTicket.setFoodType(this.mealChoice);
+                    mealFee=new mealprice(mealChoice).calculatePrice();
+                }
+                if(optionStandard.isSelected() && optionVegetarian.isSelected() && optionGourmet.isSelected() && !optionHalal.isSelected()) {
+                    this.mealChoice="Standard; Vegetarian and Gourmet Menu";
+                    myTicket.setFoodType(mealChoice);
+                    mealFee=new mealprice(mealChoice).calculatePrice();
+                }
+                if(optionHalal.isSelected() && optionVegetarian.isSelected() && optionGourmet.isSelected() && !optionStandard.isSelected()) {
+                    this.mealChoice="Vegetarian; Halal and Gourmet Menu";
+                    myTicket.setFoodType(this.mealChoice);
+                    mealFee=new mealprice(mealChoice).calculatePrice();
+                }
+                if(optionHalal.isSelected() && optionVegetarian.isSelected() && optionGourmet.isSelected() && optionStandard.isSelected()) {
+                    this.mealChoice="Standard; Vegetarian; Halal and Gourmet Menu";
+                    myTicket.setFoodType(this.mealChoice);
+                    mealFee=new mealprice(mealChoice).calculatePrice();
+                }
+                this.dispose();
+                new Payment(myTicket,this.seatFee,this.mealFee,myFlight);
+
+            }
         }
         else if (e.getSource()==b2) {
             this.dispose();

@@ -1,4 +1,4 @@
-package boundary;
+package control;
 
 import javax.swing.*;
 import java.awt.*;

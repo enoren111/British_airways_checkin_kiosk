@@ -16,7 +16,6 @@ public class TestCustomer {
 
     @Test
     public void testCheckBookingNumber(){
-
         Assertions.assertEquals(ticket1.toString(), customer.checkBookNumber("A14023010").toString());
         Assertions.assertNull(customer.checkBookNumber("A140010"));
         Assertions.assertNull(customer.checkBookNumber(""));
@@ -24,7 +23,6 @@ public class TestCustomer {
 
     @Test
     public void testCheckIdDocument(){
-
         Assertions.assertEquals(ticket1.toString(), customer.checkIdDocument("Davis","123980")[0].toString());
         Assertions.assertEquals(ticket2.toString(), customer.checkIdDocument("Davis","123980")[1].toString());
         Assertions.assertNull(customer.checkIdDocument("Miles Davis","123980"));

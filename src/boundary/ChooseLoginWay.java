@@ -1,5 +1,8 @@
 package boundary;
 
+import control.Button1;
+import control.Head1;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;

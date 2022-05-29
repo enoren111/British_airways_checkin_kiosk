@@ -49,8 +49,17 @@ public class Seats extends SeatsInformation {
         add(seat);
     }
 
-
-
+    public void setSeat(String seatNumber){
+        Seat mySeat = new Seat("0","0");
+        for (Seat seat: seatList) {
+            if (seat.getSeatNumber().equals(seatNumber)) {
+                seat.setSeatState("-1");
+                mySeat = seat;
+            }
+        }
+        replace(mySeat);
+        write();
+    }
 
     public Seat checkSeatNumber(String SeatNumber){
         for(Seat seat: seatList){
@@ -60,8 +69,6 @@ public class Seats extends SeatsInformation {
         }
         return null;
     }
-
-
 
     public boolean write(){
         boolean writeSucceed=true;
