@@ -13,7 +13,8 @@ import java.util.Objects;
  */
 
 public class Seats extends SeatsInformation {
-    public Seats(){
+    public Seats(String pathname){
+        super(pathname);
         readFile();
     }
 
@@ -60,22 +61,7 @@ public class Seats extends SeatsInformation {
         return null;
     }
 
-//    public Ticket[] checkIdDocument(String surname, String idDocument){
-//        Ticket[] tickets=new Ticket[10];
-//        int i=0;
-//        for(Ticket ticket: ticketHashSet){
-//            if(Objects.equals(ticket.getIdDocument(), idDocument)){
-//                if(surname.trim().equals(ticket.getSurname())){
-//                    tickets[i] = ticket;
-//                    i++;
-//                }
-//            }
-//        }
-//        if(tickets[0]==null){
-//            return null;
-//        }
-//        return tickets;
-//    }
+
 
     public boolean write(){
         boolean writeSucceed=true;

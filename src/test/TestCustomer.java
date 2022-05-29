@@ -4,7 +4,7 @@ import control.Ticket;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.Assert.assertEquals;
+//import static org.junit.Assert.assertEquals;
 public class TestCustomer {
     Customer customer = new Customer();
     Ticket ticket1 = new Ticket("Miles Davis","123980","AM337","A14023010"

@@ -3,6 +3,7 @@ package entity;
 import boundary.FlightFrame;
 import control.Seat;
 import control.Seats;
+import control.Ticket;
 
 import javax.swing.*;
 
@@ -19,6 +20,10 @@ public class SeatButton extends JButton implements ActionListener{
     //SeatType: normal type(no more extra payment); special
     public String SeatId;
     public ArrayList<SeatButton> seats;
+    public Ticket myTicket = new Ticket("","","","","","","","","","");
+
+
+
     Seats SeatsDatabase;
 
     public SeatButton(String url, int x, int y, String SeatState,String SeatType, String SeatId) {
@@ -27,7 +32,7 @@ public class SeatButton extends JButton implements ActionListener{
         this.SeatId = SeatId;
         this.setText(SeatId);
         this.setHorizontalTextPosition(SwingConstants.CENTER);
-        SeatsDatabase = new Seats();
+        SeatsDatabase = new Seats(myTicket.getFlightNumber());
         URL resource = FlightFrame.class.getResource(url);
         Icon icon = new ImageIcon(resource);
         setIcon(icon);
@@ -96,6 +101,10 @@ public class SeatButton extends JButton implements ActionListener{
 
     public void setSeats(ArrayList<SeatButton> seats) {
         this.seats = seats;
+    }
+
+    public void setMyTicket(Ticket myTicket) {
+        this.myTicket = myTicket;
     }
 }
 

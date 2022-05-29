@@ -14,9 +14,6 @@ public class FlightFrame extends MainFrame implements ActionListener {
 
 	JButton b1, b2;
 	int seatFee;
-	String mySeatState;
-	String mySeatType;
-	String mySeatId;
 	Ticket myTicket;
 	Flight myFlight;
 	Customer CustomerDatabase;
@@ -25,7 +22,7 @@ public class FlightFrame extends MainFrame implements ActionListener {
 
 
 
-	ArrayList<SeatButton> seats = new SeatButtons().Buttons;
+	ArrayList<SeatButton> seats;
 
 	public FlightFrame(Ticket myTicket, Flight myFlight) {
 		/**
@@ -34,13 +31,13 @@ public class FlightFrame extends MainFrame implements ActionListener {
 		 */
 		this.myTicket = myTicket;
 		this.myFlight = myFlight;
+		seats = new SeatButtons().Buttons;
 		CustomerDatabase = new Customer();
-		SeatsDatabase = new Seats();
-
-
+		SeatsDatabase = new Seats(myTicket.getFlightNumber());
 
 		for (SeatButton seat:seats) {
 			seat.setSeats(seats);
+			seat.setMyTicket(myTicket);
 		}
 
 		SeatButton[] seatButtons = new SeatButton[32];

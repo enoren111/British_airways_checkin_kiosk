@@ -33,7 +33,7 @@ public class MealSelection extends MainFrame implements ActionListener{
         this.myTicket = myTicket;
         this.myFlight = myFlight;
         CustomerDatabase = new Customer();
-        SeatsDatabase = new Seats();
+        SeatsDatabase = new Seats(myTicket.getFlightNumber());
         Container container = this.getContentPane();
         container.add(mainPanel);
         mainPanel.setSize(1200,1000);
@@ -235,7 +235,8 @@ public class MealSelection extends MainFrame implements ActionListener{
                 JOptionPane.showMessageDialog(null, "Please choose your meals", "Warning",
                         JOptionPane.WARNING_MESSAGE);
             }
-
+            CustomerDatabase.replace(myTicket);
+            CustomerDatabase.write();
             this.dispose();
             new Payment(myTicket,this.seatFee,this.mealFee,myFlight);
 

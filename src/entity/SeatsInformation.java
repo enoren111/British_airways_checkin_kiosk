@@ -7,6 +7,11 @@ import java.util.ArrayList;
 import java.util.HashSet;
 
 public class SeatsInformation {
-    protected String pathname = "seat.txt";
-    public ArrayList<Seat> seatList = new ArrayList<>();
+    public String pathname;
+    public ArrayList<Seat> seatList;
+    public SeatsInformation(String FlightNumber){
+        this.pathname = "src/SeatDataBase/"+FlightNumber+"Seat.txt";
+        seatList = new ArrayList<>();
+    }
+
 }
