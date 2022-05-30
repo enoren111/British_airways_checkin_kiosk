@@ -74,7 +74,7 @@ public class boardingpass_bg extends JPanel {
                 g.drawString("Carry-On",57,265);
                 g.setColor(Color.BLACK);
                 g.drawString("Hint: ",57,320);
-                g.drawString("1. Power Bank are not allowed to take.",57,340);
+                g.drawString("1. Power Banks are not allowed to take.",57,340);
                 g.drawString("2. Acuity things (like knives) are prohibited.",57,360);
             }
             case "Counter: " -> {
