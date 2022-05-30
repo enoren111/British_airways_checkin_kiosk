@@ -9,6 +9,10 @@ import java.io.IOException;
 public class idPanel extends JPanel {
     Image idcard;
 
+    /**
+     * This method is used to draw the id panel
+     * @param g
+     */
     @Override
     public void paint(Graphics g) {
         super.paint(g);

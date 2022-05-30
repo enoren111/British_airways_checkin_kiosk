@@ -18,6 +18,9 @@ public class Seats extends SeatsInformation {
         readFile();
     }
 
+    /**
+     * This method is used to read file.
+     */
     public void readFile() {
         try (FileReader reader = new FileReader(pathname);
              BufferedReader br = new BufferedReader(reader)
@@ -34,21 +37,37 @@ public class Seats extends SeatsInformation {
         }
     }
 
+    /**
+     * This method is used to delete the seat
+     * @param SeatNumber seat number
+     */
     public void delete(String SeatNumber){
         Seat deleteSeat;
         deleteSeat = checkSeatNumber(SeatNumber);
         seatList.remove(deleteSeat);
     }
 
+    /**
+     * This method is used to add seat.
+     * @param seat seat added
+     */
     public void add(Seat seat){
         seatList.add(seat);
     }
 
+    /**
+     * This method is used to replace seat.
+     * @param seat seat replaced
+     */
     public void replace(Seat seat){
         delete(seat.getSeatNumber());
         add(seat);
     }
 
+    /**
+     * This method is used to set seat.
+     * @param seatNumber seat number
+     */
     public void setSeat(String seatNumber){
         Seat mySeat = new Seat("0","0");
         for (Seat seat: seatList) {
@@ -61,6 +80,11 @@ public class Seats extends SeatsInformation {
         write();
     }
 
+    /**
+     * This method is used to check the seat state
+     * @param SeatNumber seat number
+     * @return seat
+     */
     public Seat checkSeatNumber(String SeatNumber){
         for(Seat seat: seatList){
             if(Objects.equals(seat.getSeatNumber(), SeatNumber)){
@@ -70,6 +94,10 @@ public class Seats extends SeatsInformation {
         return null;
     }
 
+    /**
+     * This method is used to write the file.
+     * @return
+     */
     public boolean write(){
         boolean writeSucceed=true;
         try {

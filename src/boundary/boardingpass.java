@@ -66,13 +66,17 @@ public class boardingpass extends MainFrame implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if(e.getSource()==bt1){
             String[] options = { "OK ", "CANCEL " };
+            String[] option={"OK"};
             int n =  JOptionPane.showOptionDialog(null,"Do you want to print?",
                     "Print Choice", JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,
                     null,options,options[0]);
+            if (n==1){
+                JOptionPane.showOptionDialog(null,"Print Successfully","Success",
+                        JOptionPane.YES_NO_OPTION,JOptionPane.PLAIN_MESSAGE,null,option,option[0]);
+            }
         }
         else if(e.getSource()==bt2){
-            System.exit(0);
+                System.exit(0);
         }
     }
-
 }

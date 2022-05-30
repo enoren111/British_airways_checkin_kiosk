@@ -9,6 +9,10 @@ import java.io.IOException;
 public class botBar extends JPanel {
     Image bottom;
 
+    /**
+     * This method is used to paint the bottom part of the interface.
+     * @param g
+     */
     @Override
     public void paint(Graphics g){
         super.paint(g);

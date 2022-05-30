@@ -7,6 +7,8 @@ public class mealselect {
     Ticket myTicket;
     String mealChoice;
 
+
+
     public mealselect(Ticket myTicket,JCheckBox jCheckBox1,JCheckBox jCheckBox2,
                       JCheckBox jCheckBox3,JCheckBox jCheckBox4){
         this.myTicket=myTicket;
@@ -16,13 +18,15 @@ public class mealselect {
         this.jCheckBox4=jCheckBox4;
     }
 
-    public void showSelectMessage(){
+    public String showSelectMessage(){
 
         if(!jCheckBox1.isSelected() && !jCheckBox2.isSelected()
                 && !jCheckBox3.isSelected() && !jCheckBox4.isSelected())
         {
-            JOptionPane.showMessageDialog(null, "Please choose your meals",
-                    "Warning",JOptionPane.WARNING_MESSAGE);
+            String[] options={"OK"};
+            JOptionPane.showOptionDialog(null, "Please choose your meals", "Warning",
+                    JOptionPane.YES_NO_OPTION,JOptionPane.WARNING_MESSAGE,
+                    null,options,options[0]);
         }
 
         else {
@@ -100,5 +104,6 @@ public class mealselect {
 
         }
 
+        return mealChoice;
     }
 }

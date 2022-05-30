@@ -16,6 +16,9 @@ public class Customer extends CustomerInformation {
         readFile();
     }
 
+    /**
+     * This method is used to read file.
+     */
     public void readFile() {
         try (FileReader reader = new FileReader(pathname);
              BufferedReader br = new BufferedReader(reader)
@@ -36,21 +39,38 @@ public class Customer extends CustomerInformation {
         }
     }
 
+    /**
+     * This method is used to delete the ticket.
+     * @param bookNumber
+     */
     public void delete(String bookNumber){
         Ticket deleteTicket;
         deleteTicket = checkBookNumber(bookNumber);
         ticketHashSet.remove(deleteTicket);
     }
 
+    /**
+     * This method is used to add ticket.
+     * @param ticket
+     */
     public void add(Ticket ticket){
         ticketHashSet.add(ticket);
     }
 
+    /**
+     * This method is used to replace the ticket.
+     * @param ticket
+     */
     public void replace(Ticket ticket){
         delete(ticket.getBookNumber());
         add(ticket);
     }
 
+    /**
+     * This method is used to check the book number.
+     * @param bookNumber
+     * @return Ticker
+     */
     public Ticket checkBookNumber(String bookNumber){
         for(Ticket ticket: ticketHashSet){
             if(Objects.equals(ticket.getBookNumber(), bookNumber)){
@@ -60,6 +80,12 @@ public class Customer extends CustomerInformation {
         return null;
     }
 
+    /**
+     * This method is used to check the id document.
+     * @param surname
+     * @param idDocument
+     * @return
+     */
     public Ticket[] checkIdDocument(String surname, String idDocument){
         Ticket[] tickets=new Ticket[10];
         int i=0;
@@ -80,6 +106,10 @@ public class Customer extends CustomerInformation {
         return tickets;
     }
 
+    /**
+     * This method is used to write the String into the database.
+     * @return true if write is a success.
+     */
     public boolean write(){
         //return a boolean to represent if the writing method is success. ture is succeed
         boolean writeSucceed=true;
@@ -87,15 +117,14 @@ public class Customer extends CustomerInformation {
             BufferedWriter out = new BufferedWriter(new FileWriter(pathname));
             for(Ticket ticket: ticketHashSet ){
                 out.write(ticket.toString()+"\n");
-                System.out.println(ticket.toString());
+                //System.out.println(ticket.toString());
             }
             out.close();
-            System.out.println("");
+            //System.out.println("");
         } catch (IOException e) {
-
             writeSucceed=false;
             e.printStackTrace();
-            System.out.println("");
+            //System.out.println("");
         }
         return writeSucceed;
     }

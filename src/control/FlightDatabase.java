@@ -12,6 +12,10 @@ public class FlightDatabase extends Flightdatabase {
     public  FlightDatabase(){
         loadFlight();
     }
+
+    /**
+     * This method is used to read the flight information
+     */
     public void loadFlight() {
         try (FileReader reader = new FileReader(pathname);
              BufferedReader br = new BufferedReader(reader)
@@ -30,6 +34,12 @@ public class FlightDatabase extends Flightdatabase {
             e.printStackTrace();
         }
     }
+
+    /**
+     * This method is used to search fligh
+     * @param flightNumber the flight number
+     * @return the flight corresponds to the flight number
+     */
     public Flight searchFlight(String flightNumber){
         for(Flight flight: flightHashSet){
             if(Objects.equals(flight.getFlightNumber(), flightNumber)){

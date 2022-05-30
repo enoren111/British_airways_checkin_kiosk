@@ -9,6 +9,11 @@ import java.io.IOException;
 public class topBar extends JPanel {
     Image head2;
     Image sky;
+
+    /**
+     * This method is used to paint the top bar.
+     * @param g
+     */
     @Override
     public void paint(Graphics g){
         super.paint(g);
