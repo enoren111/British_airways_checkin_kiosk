@@ -47,12 +47,11 @@ public class Payment extends MainFrame implements ActionListener {
 		label3.setBounds(0,0,1000,100);
 		mainPanel.add(label3);
 
-
 		JPanel panel1 = new JPanel();
 		panel1.setBorder(BorderFactory.createTitledBorder("EXTRA OPTION"));
 		panel1.setBounds(0, 80, 1200, 200);
 		mainPanel.add(panel1);
-		String strMsg1 = "You total fee: " + this.total_fee + "$" +", including";
+		String strMsg1 = myTicket.getName()+"'s total fee: " + this.total_fee + "$" +", including";
 		String strMsg2 ="Seat: " + this.seatType+ "   , Fee:" + this.seatFee + "$";
 		String strMsg3 ="Meal: " + this.foodType+ "   , Fee:" + this.mealFee + "$";
 		String strMsg = "<html><body>" + strMsg1 + "<br>" + strMsg2 + "<br>" + strMsg3 + "<body></html>";
@@ -118,13 +117,17 @@ public class Payment extends MainFrame implements ActionListener {
 
 	// Override the method of the interface ActionListener
 	public void actionPerformed(ActionEvent e) {
+		String[] options={"OK"};
 		if (e.getSource() == b1) {
 			if ("".equals(jt1.getText()) || "".equals(jt2.getText())){
-				JOptionPane.showMessageDialog(null, "Please input your credit card number " +
+				JOptionPane.showOptionDialog(null, "Please input your credit card number " +
 								  	           "and password to complete your payment", "Payment error",
-						                       JOptionPane.WARNING_MESSAGE);}
+						JOptionPane.YES_NO_OPTION,JOptionPane.ERROR_MESSAGE,
+						null,options,options[0]);}
 			else if(jt1.getText().equals(myTicket.getCreditCard())&&jt2.getText().equals(myTicket.getCreditCardPassword())) {
-				JOptionPane.showMessageDialog(null, "Pay successfully!", "Hint",JOptionPane.PLAIN_MESSAGE);
+				JOptionPane.showOptionDialog(null, "Pay successfully!", "Hint",
+						JOptionPane.YES_NO_OPTION,JOptionPane.ERROR_MESSAGE,
+						null,options,options[0]);
 				this.dispose();
 				database.replace(myTicket);
 				database.write();
@@ -132,7 +135,6 @@ public class Payment extends MainFrame implements ActionListener {
 				new boardingpass(myTicket,myFlight);
 			}
 			else if (!jt1.getText().equals(myTicket.getCreditCard())){
-				String[] options ={"OK"};
 				JOptionPane.showOptionDialog(null, "Please input your credit card number " +
 								              "correctly to complete your payment", "Payment error",
 						JOptionPane.YES_NO_OPTION,JOptionPane.ERROR_MESSAGE,
@@ -140,7 +142,6 @@ public class Payment extends MainFrame implements ActionListener {
 			}
 			else if (jt1.getText().equals(myTicket.getCreditCard())&&
 					!jt2.getText().equals(myTicket.getCreditCardPassword())){
-				String[] options ={"OK"};
 				JOptionPane.showOptionDialog(null, "Please input your credit card password " +
 								"correctly to complete your payment", "Payment error",
 						JOptionPane.YES_NO_OPTION,JOptionPane.ERROR_MESSAGE,
