@@ -51,9 +51,9 @@ public class Payment extends MainFrame implements ActionListener {
 		panel1.setBorder(BorderFactory.createTitledBorder("EXTRA OPTION"));
 		panel1.setBounds(0, 80, 1200, 200);
 		mainPanel.add(panel1);
-		String strMsg1 = myTicket.getName()+"'s total fee: " + this.total_fee + "$" +", including";
-		String strMsg2 ="Seat: " + this.seatType+ "   , Fee:" + this.seatFee + "$";
-		String strMsg3 ="Meal: " + this.foodType+ "   , Fee:" + this.mealFee + "$";
+		String strMsg1 = myTicket.getName()+"'s total fee: "+"$" + this.total_fee  +", including";
+		String strMsg2 ="Seat: " + this.seatType+ "   , Fee: "+"$" + this.seatFee ;
+		String strMsg3 ="Meal: " + this.foodType+ "   , Fee: "+"$"+ this.mealFee;
 		String strMsg = "<html><body>" + strMsg1 + "<br>" + strMsg2 + "<br>" + strMsg3 + "<body></html>";
 		JLabel label = new JLabel(strMsg);
 		panel1.add(label);
