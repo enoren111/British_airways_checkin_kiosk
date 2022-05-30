@@ -126,7 +126,7 @@ public class Payment extends MainFrame implements ActionListener {
 						null,options,options[0]);}
 			else if(jt1.getText().equals(myTicket.getCreditCard())&&jt2.getText().equals(myTicket.getCreditCardPassword())) {
 				JOptionPane.showOptionDialog(null, "Pay successfully!", "Hint",
-						JOptionPane.YES_NO_OPTION,JOptionPane.ERROR_MESSAGE,
+						JOptionPane.YES_NO_OPTION,JOptionPane.PLAIN_MESSAGE,
 						null,options,options[0]);
 				this.dispose();
 				database.replace(myTicket);
